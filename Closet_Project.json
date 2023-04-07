@@ -1,0 +1,49 @@
+
+{
+    "tops": {
+        "t-shirt": ["sunny", "cold", "rainy"],
+        "tank top": "sunny",
+        "short-sleeve button-up": "sunny",
+        "sweater": "cold",
+        "rain jacket": "rainy",
+        "hoodie": ["cold", "rainy"], 
+        "flannel": ["cold", "rainy"],
+        "turtleneck": "cold",
+        "windbreaker": "rainy",
+        "poncho": "rainy",
+        "long-sleeve button-up": "cold" 
+    },
+    "pants": {
+        "jorts": "sunny",
+        "jeans": ["cold", "rainy"],
+        "sweatpants": "cold",
+        "cargo pants": "cold",
+        "leggings": ["rainy", "cold"],
+        "water-resistant pants": "rainy",
+        "khakis": "cold",
+        "runner shorts": "sunny",
+        "skirts": "sunny",
+        "biker shorts": "sunny",
+        "sweatshorts": "sunny",
+        "capris": "sunny"
+    },
+    "shoes": {
+        "sneakers": ["cold", "rainy", "sunny"],
+        "rainboots": "rainy",
+        "flip-flops": "sunny",
+        "crocs": "sunny",
+        "uggs boots": "cold",
+        "timberlands": ["rainy", "cold"],
+        "construction boots": "cold",
+        "sandals": "sunny"
+    },
+    "accessories": {
+        "umbrella": "rainy",
+        "sunglasses": "sunny",
+        "baseball cap": "sunny",
+        "beanie": ["cold", "rainy"],
+        "scarf": "cold",
+        "gloves": ["cold", "rainy"],
+        "ski-mask": "cold"
+    }
+}
