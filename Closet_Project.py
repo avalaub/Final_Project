@@ -7,4 +7,5 @@ import json
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
-    main(args.filepath, args.weather, args.tops, args.pants, args.shoes, args.accessories)
+    main(args.filepath, args.weather, args.tops, args.pants, args.shoes, 
+         args.accessories)
