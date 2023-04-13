@@ -23,5 +23,11 @@ if __name__ == "__main__":
 
 
 def main(filepath):
+    """Opens the JSON file for reading and loads its contents.
+    
+    Args:
+        filepath (str): string representing path to JSON file containing
+        elements of a closet.
+    """
     with open(filepath, "r", encoding="utf-8") as f:
         closet = json.load(f)
