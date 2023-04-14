@@ -5,7 +5,28 @@ from argparse import ArgumentParser
 import sys
 import json
 
+class Closet:
+    """This is the closet of items that will reveal what is in it and the options for the item for the corresponding weather"""
+    def __init__(self, tops, pants,  shoes, accessories):
+        """This will initialize the items that are in the JSON file from the closet and the categories that are listed
+        Args:
+            tops(str): the tops in the JSON closet
+            pants(str): the pants in the JSON closet 
+            shoes(str): the shoes in the JSON closet 
+            accessories(str): the accessories in the JSON closet 
+        
+        """
+        self.tops = tops
+        self.pants = pants
+        self.shoes = shoes
+        self.accessories = accessories
 
+    def getKeys(self):
+        """This will reveal what the weather is to the corredsponding key of the item in the closet"""
+        
+    def options(self):
+        """ This will show what are the options for the category based on the """
+        
 
 class Selection(Closet):
     """Child class for Closet, user selects outfit.
