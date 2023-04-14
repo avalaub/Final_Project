@@ -13,6 +13,8 @@ class Selection(Closet):
     def choice(self):
         """User's choice based upon the weather.
         """
+        self.weather = input("Hello! What is the weather like today?")
+        return self.weather
 
     def __repr__(self):
         return f"Because of the weather being {self.weather}, you decided upon this outfit: \
