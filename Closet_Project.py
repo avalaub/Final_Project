@@ -21,9 +21,48 @@ class Closet:
         self.shoes = shoes
         self.accessories = accessories
 
-    def getKeys(self):
-        """This will reveal what the weather is to the corredsponding key of the item in the closet"""
-        
+    def getKeys(self, value):
+        """This will reveal what the weather is to the corredsponding key of the item in the closet
+        Returns:
+            Keys of the items in the dictionary """
+        myList = []
+        for item in self.tops:
+            val = self.tops[item]
+            if isinstance(val, str):
+                if value == val:
+                    myList.append(item)
+            else:
+                for elem in val:
+                    if elem == value:
+                        myList.append(item)
+        for item in self.pants:
+            val = self.pants[item]
+            if isinstance(val, str):
+                if value == val:
+                    myList.append(item)
+            else:
+                for elem in val:
+                    if elem == value:
+                        myList.append(item)
+        for item in self.shoes:
+            val = self.shoes[item]
+            if isinstance(val, str):
+                if value == val:
+                    myList.append(item)
+            else:
+                for elem in val:
+                    if elem == value:
+                        myList.append(item)
+        for item in self.accessories:
+            val = self.accessories[item]
+            if isinstance(val, str):
+                if value == val:
+                    myList.append(item)
+            else:
+                for elem in val:
+                    if elem == value:
+                        myList.append(item)
+            
     def options(self):
         """ This will show what are the options for the category based on the """
         
@@ -116,7 +155,7 @@ def main(filepath):
         elements of a closet.
     """
     with open(filepath, "r", encoding ="utf-8") as f:
-        closet =json.load(f)
+        closet = json.load(f)
 
 
 def parse_args(arglist):
