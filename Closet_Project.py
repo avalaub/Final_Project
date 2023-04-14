@@ -14,7 +14,12 @@ class Selection(Closet):
         """User's choice based upon the weather.
         """
         user_weather = input("What is the weather today? Please answer sunny, rainy, or cold!")
-        return user_weather
+        if isinstance(user_weather, str) == False:
+            raise TypeError("Weather is a str; must be sunny, rainy, or cold")
+        elif user_weather != "sunny" or user_weather != "rainy" or user_weather != "cold":
+            raise ValueError("Weather must be sunny, rainy, or cold")
+        else:
+            return user_weather
 
     def __repr__(self):
         return f"Because of the weather being {self.weather}, you decided upon this outfit: \
