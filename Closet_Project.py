@@ -21,6 +21,12 @@ class Selection(Closet):
         {self.top} with {self.pants}, {self.shoes}, and {self.accessories}"
 
 def main(filepath):
+    """Opens the JSON file for reading and loads its contents.
+    
+    Args:
+        filepath (str): string representing path to JSON file containing
+        elements of a closet.
+    """
     with open(filepath, "r", encoding="utf-8") as f:
         closet = json.load(f)
 
