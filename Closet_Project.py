@@ -23,6 +23,7 @@ class Selection(Closet):
             user_weather(str): User input for weather.
         """
         user_weather = input("What is the weather today? Please answer sunny, rainy, or cold!")
+        self.weather = user_weather
         if isinstance(user_weather, str) == False:
             raise TypeError("Weather is a str; must be sunny, rainy, or cold")
         elif user_weather != "sunny" or user_weather != "rainy" or user_weather != "cold":
@@ -40,22 +41,24 @@ class Selection(Closet):
             shoes(dict): dictorionary of shoes in closet.
             accessories(dict): dictorionary of accessories in closet.
         """
-        user_weather = self.weather
         if user_weather == "sunny":
             options_tops = list(filter(lambda x: tops[x] == "sunny", tops))
-            options_pants = list(filter(lambda x: pants[x] == "sunny", tops))
-            options_shoes = list(filter(lambda x: shoes[x] == "sunny", tops))
-            options_accessories = list(filter(lambda x: accessories[x] == "sunny", tops))
+            options_pants = list(filter(lambda x: pants[x] == "sunny", pants))
+            options_shoes = list(filter(lambda x: shoes[x] == "sunny", shoes))
+            options_accessories = \
+            list(filter(lambda x: accessories[x] == "sunny", accessories))
         elif user_weather == "rainy":
             options_tops = list(filter(lambda x: tops[x] == "rainy", tops))
-            options_pants = list(filter(lambda x: pants[x] == "rainy", tops))
-            options_shoes = list(filter(lambda x: shoes[x] == "rainy", tops))
-            options_accessories = list(filter(lambda x: accessories[x] == "rainy", tops))
+            options_pants = list(filter(lambda x: pants[x] == "rainy", pants))
+            options_shoes = list(filter(lambda x: shoes[x] == "rainy", shoes))
+            options_accessories = \
+            list(filter(lambda x: accessories[x] == "rainy", accessories))
         elif user_weather == "cold":
             options_tops = list(filter(lambda x: tops[x] == "cold", tops))
-            options_pants = list(filter(lambda x: pants[x] == "cold", tops))
-            options_shoes = list(filter(lambda x: shoes[x] == "cold", tops))
-            options_accessories = list(filter(lambda x: accessories[x] == "cold", tops))
+            options_pants = list(filter(lambda x: pants[x] == "cold", pants))
+            options_shoes = list(filter(lambda x: shoes[x] == "cold", shoes))
+            options_accessories = \
+            list(filter(lambda x: accessories[x] == "cold", accessories))
         print(f"Since the weather is {user_weather}, these are your options. For tops: \
               {options_tops}, for pants: {options_pants}, for shoes: {options_shoes}, \
               for accessories: {options_accessories}")
