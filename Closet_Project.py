@@ -118,6 +118,34 @@ def main(filepath):
     with open(filepath, "r", encoding ="utf-8") as f:
         closet =json.load(f)
 
+
+def parse_args(arglist):
+    """ Parse command-line arguments.
+    
+    Expect six mandatory arguments:
+        The path to a file of clothing options
+        The weather (either rainy, sunny, or cold)
+        The top you want to wear from the file of clothing options
+        The pants you want to wear from the file of clothing options
+        The shoes you want to wear from the file of clothing options
+        The accessories you want to wear from the file of clothing options
+    
+    Args:
+         arglist (list of str): command-line arguments.
+
+    Returns:
+        namespace: an object with six attributes, filepath, weather, tops,
+            pants, shoes, accessories.
+    """
+    parser = ArgumentParser()
+    parser.add_argument("filepath", help="file with clothing options")
+    parser.add_argument("weather", help="Weather is rainy, sunny, or cold")
+    parser.add_argument("tops", help="top you want to wear")
+    parser.add_argument("pants", help="pants you want to wear")
+    parser.add_argument("shoes", help="shoes you want to wear")
+    parser.add_argument("accessories", help="accessories you want to wear")
+    return parser.parse_args(arglist)
+
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
     main(args.filepath, args.weather, args.tops, args.pants, args.shoes, 
