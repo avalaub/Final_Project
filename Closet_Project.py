@@ -6,11 +6,13 @@ import json
 
 
 class Selection(Closet):
-    """Child class for Closet, users selects outfit.
+    """Child class for Closet, user selects outfit.
     """
     def choice(self):
         """User's choice based upon the weather.
         """
+        user_weather = input("What is the weather today? Please answer sunny, cold, or rainy!")
+        return user_weather
     
     def __repr__(self):
         return f"Because of the weather being {self.weather}, you decided upon this outfit: \
