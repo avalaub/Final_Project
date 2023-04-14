@@ -27,8 +27,8 @@ def main(filepath):
         filepath (str): string representing path to JSON file containing
         elements of a closet.
     """
-    with open(filepath, "r", encoding="utf-8") as f:
-        closet = json.load(f)
+    with open(filepath, "r", encoding ="utf-8") as f:
+        closet =json.load(f)
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
