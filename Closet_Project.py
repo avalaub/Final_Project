@@ -119,6 +119,7 @@ class Selection(Closet):
             options_shoes = list(filter(lambda x: shoes[x] == "cold", shoes))
             options_accessories = \
             list(filter(lambda x: accessories[x] == "cold", accessories))
+        
         print(f"Since the weather is {user_weather}, these are your options. For tops: \
               {options_tops}, for pants: {options_pants}, for shoes: {options_shoes}, \
               for accessories: {options_accessories}")
@@ -143,9 +144,16 @@ class Selection(Closet):
         self.shoes = final_shoes
         self.accessories = final_accessories
 
+        outfit = self.tops + self.pants + self.shoes + self.accessories
+    
     def __repr__(self):
         return f"Because of the weather being {self.weather}, you decided upon this outfit: \
         {self.tops} with {self.pants}, {self.shoes}, and {self.accessories}"
+        
+    def decide():
+        print("Are you happy with your outfit?") if
+        
+    
 
 def main(filepath):
     """Opens the JSON file for reading and loads its contents.
