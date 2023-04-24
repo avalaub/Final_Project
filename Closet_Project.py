@@ -26,6 +26,9 @@ class Closet:
         Returns:
             Keys of the items in the dictionary 
         """
+        """This will reveal what the weather is to the corresponding key of the item in the closet.
+        Returns:
+            Keys of the items in the dictionary. """
         myList = []
         for item in self.tops:
             val = self.tops[item]
@@ -95,7 +98,7 @@ class Selection(Closet):
         elif user_weather != "sunny" or user_weather != "rainy" or user_weather != "cold":
             raise ValueError("Weather must be sunny, rainy, or cold")
         else:
-            return user_weather
+            return f"The weather for today is {user_weather}."
     
     def options(self, user_weather, tops, pants, shoes, accessories):
         """User's options based upon the weather.
@@ -125,6 +128,7 @@ class Selection(Closet):
             options_shoes = list(filter(lambda x: shoes[x] == "cold", shoes))
             options_accessories = \
             list(filter(lambda x: accessories[x] == "cold", accessories))
+        
         print(f"Since the weather is {user_weather}, these are your options. For tops: \
               {options_tops}, for pants: {options_pants}, for shoes: {options_shoes}, \
               for accessories: {options_accessories}")
@@ -149,9 +153,17 @@ class Selection(Closet):
         self.shoes = final_shoes
         self.accessories = final_accessories
 
+        outfit = self.tops + self.pants + self.shoes + self.accessories
+    
     def __repr__(self):
         return f"Because of the weather being {self.weather}, you decided upon this outfit: \
         {self.tops} with {self.pants}, {self.shoes}, and {self.accessories}"
+        
+    def decide():
+        user_decision = input("Are you happy with your outfit? Please answer yes or no.")
+        print("Glad you like your outfit!") if user_decision == "yes" else print("Try again!")
+        
+    
 
 def main(filepath):
     """Opens the JSON file for reading and loads its contents.
