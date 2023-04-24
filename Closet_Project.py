@@ -151,7 +151,8 @@ class Selection(Closet):
         {self.tops} with {self.pants}, {self.shoes}, and {self.accessories}"
         
     def decide():
-        print("Are you happy with your outfit?") if
+        user_decision = input("Are you happy with your outfit? Please answer yes or no.")
+        print("Glad you like your outfit!") if user_decision == "yes" else print("Try again!")
         
     
 
