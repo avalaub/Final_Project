@@ -22,9 +22,10 @@ class Closet:
         self.accessories = accessories
 
     def getKeys(self, value):
-        """This will reveal what the weather is to the corredsponding key of the item in the closet
+        """This will reveal what the weather is to the corresponding key of the item in the closet
         Returns:
-            Keys of the items in the dictionary """
+            Keys of the items in the dictionary 
+        """
         myList = []
         for item in self.tops:
             val = self.tops[item]
@@ -64,7 +65,12 @@ class Closet:
                         myList.append(item)
             
     def options(self):
-        """ This will show what are the options for the category based on the """
+        """ This will show what are the options for the category based on the
+        return of getKeys method.
+        
+        Returns:
+            List of  
+        """
         
 
 class Selection(Closet):
@@ -178,14 +184,8 @@ def parse_args(arglist):
     """
     parser = ArgumentParser()
     parser.add_argument("filepath", help="file with clothing options")
-    parser.add_argument("weather", help="Weather is rainy, sunny, or cold")
-    parser.add_argument("tops", help="top you want to wear")
-    parser.add_argument("pants", help="pants you want to wear")
-    parser.add_argument("shoes", help="shoes you want to wear")
-    parser.add_argument("accessories", help="accessories you want to wear")
     return parser.parse_args(arglist)
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
-    main(args.filepath, args.weather, args.tops, args.pants, args.shoes, 
-         args.accessories)
+    main(args.filepath)
