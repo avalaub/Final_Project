@@ -22,9 +22,9 @@ class Closet:
         self.accessories = accessories
 
     def getKeys(self, value):
-        """This will reveal what the weather is to the corredsponding key of the item in the closet
+        """This will reveal what the weather is to the corresponding key of the item in the closet.
         Returns:
-            Keys of the items in the dictionary """
+            Keys of the items in the dictionary. """
         myList = []
         for item in self.tops:
             val = self.tops[item]
@@ -89,7 +89,7 @@ class Selection(Closet):
         elif user_weather != "sunny" or user_weather != "rainy" or user_weather != "cold":
             raise ValueError("Weather must be sunny, rainy, or cold")
         else:
-            return user_weather
+            return f"The weather for today is {user_weather}."
     
     def options(self, user_weather, tops, pants, shoes, accessories):
         """User's options based upon the weather.
