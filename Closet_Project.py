@@ -133,7 +133,7 @@ class Selection(Closet):
               {options_tops}, for pants: {options_pants}, for shoes: {options_shoes}, \
               for accessories: {options_accessories}")
     
-    def choice(self, final_tops, final_pants, final_shoes, final_accessories):
+    def choice(self, options_tops, options_pants, options_shoes, options_accessories):
         """User's choice of clothes.
 
         Args:
@@ -148,12 +148,25 @@ class Selection(Closet):
             redefined `self.shoes`
             redefined `self.accessories`
         """
+        final_tops = input("What top would you like to wear? Please type answer in lower case!")
+        if final_tops not in options_tops:
+            raise ValueError("Given answer not in options.")
+        final_pants = input("What pants would you like to wear? Please type answer in lower case!")
+        if final_pants not in options_pants:
+            raise ValueError("Given answer not in options.")
+        final_shoes = input("What shoes would you like to wear? Please type answer in lower case!")
+        if final_shoes not in options_shoes:
+            raise ValueError("Given answer not in options.")
+        final_accessories = input("What accessory would you like to wear? Please type answer in lower case!")
+        if final_accessories not in options_accessories:
+            raise ValueError("Given answer not in options.")
         self.tops = final_tops
         self.pants = final_pants
         self.shoes = final_shoes
         self.accessories = final_accessories
 
         outfit = self.tops + self.pants + self.shoes + self.accessories
+        return outfit
     
     def __repr__(self):
         return f"Because of the weather being {self.weather}, you decided upon this outfit: \
@@ -181,11 +194,6 @@ def parse_args(arglist):
     
     Expect six mandatory arguments:
         The path to a file of clothing options
-        The weather (either rainy, sunny, or cold)
-        The top you want to wear from the file of clothing options
-        The pants you want to wear from the file of clothing options
-        The shoes you want to wear from the file of clothing options
-        The accessories you want to wear from the file of clothing options
     
     Args:
          arglist (list of str): command-line arguments.
