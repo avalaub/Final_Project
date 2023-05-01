@@ -164,7 +164,8 @@ def main(filepath):
         elements of a closet.
     """
     with open(filepath, "r", encoding ="utf-8") as f:
-        closet = json.load(f)
+        closetdata = json.load(f)
+        closet = Closet(closetdata)
 
 
 def parse_args(arglist):
