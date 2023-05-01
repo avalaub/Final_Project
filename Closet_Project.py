@@ -7,7 +7,7 @@ import json
 
 class Closet:
     """This is the closet of items that will reveal what is in it and the options for the item for the corresponding weather"""
-    def __init__(self, tops, pants,  shoes, accessories):
+    def __init__(self, closetdata, tops, pants,  shoes, accessories):
         """This will initialize the items that are in the JSON file from the closet and the categories that are listed
         Args:
             tops(str): the tops in the JSON closet
