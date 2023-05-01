@@ -16,10 +16,11 @@ class Closet:
             accessories(str): the accessories in the JSON closet 
         
         """
-        self.tops = tops
-        self.pants = pants
-        self.shoes = shoes
-        self.accessories = accessories
+        for clothes in closetdata:
+            self.tops = tops
+            self.pants = pants
+            self.shoes = shoes
+            self.accessories = accessories
 
     def getKeys(self, value):
         """This will reveal what the weather is to the corresponding key of the item in the closet.
