@@ -7,7 +7,7 @@ import json
 
 class Closet:
     """This is the closet of items that will reveal what is in it and the options for the item for the corresponding weather"""
-    def __init__(self, tops, pants,  shoes, accessories):
+    def __init__(self, closetdata, tops, pants,  shoes, accessories):
         """This will initialize the items that are in the JSON file from the closet and the categories that are listed
         Args:
             tops(str): the tops in the JSON closet
@@ -16,10 +16,11 @@ class Closet:
             accessories(str): the accessories in the JSON closet 
         
         """
-        self.tops = tops
-        self.pants = pants
-        self.shoes = shoes
-        self.accessories = accessories
+        for clothes in closetdata:
+            self.tops = tops
+            self.pants = pants
+            self.shoes = shoes
+            self.accessories = accessories
 
     def getKeys(self, value):
         """This will reveal what the weather is to the corresponding key of the item in the closet
@@ -186,7 +187,8 @@ def main(filepath):
         elements of a closet.
     """
     with open(filepath, "r", encoding ="utf-8") as f:
-        closet = json.load(f)
+        closetdata = json.load(f)
+        closet = Closet(closetdata)
 
 
 def parse_args(arglist):
