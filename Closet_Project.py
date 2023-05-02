@@ -16,12 +16,17 @@ class Closet:
             accessories(str): the accessories in the JSON closet 
         
         """
-        self.tops = tops
-        self.pants = pants
-        self.shoes = shoes
-        self.accessories = accessories
+        for clothes in closetdata:
+            self.tops = tops
+            self.pants = pants
+            self.shoes = shoes
+            self.accessories = accessories
 
     def getKeys(self, value):
+        """This will reveal what the weather is to the corresponding key of the item in the closet
+        Returns:
+            Keys of the items in the dictionary 
+        """
         """This will reveal what the weather is to the corresponding key of the item in the closet.
         Returns:
             Keys of the items in the dictionary. """
@@ -55,9 +60,10 @@ class Closet:
             else:
                 [item for elem in val if elem == value]
             
-    def option(self):
+    def options(self):
         """ This will show what are the options for the category based on the """
-    
+        
+
 class Selection(Closet):
     """Child class for Closet, user selects outfit.
     
@@ -118,7 +124,7 @@ class Selection(Closet):
               {options_tops}, for pants: {options_pants}, for shoes: {options_shoes}, \
               for accessories: {options_accessories}")
     
-    def choice(self, final_tops, final_pants, final_shoes, final_accessories):
+    def choice(self, options_tops, options_pants, options_shoes, options_accessories):
         """User's choice of clothes.
 
         Args:
@@ -133,12 +139,25 @@ class Selection(Closet):
             redefined `self.shoes`
             redefined `self.accessories`
         """
+        final_tops = input("What top would you like to wear? Please type answer in lower case!")
+        if final_tops not in options_tops:
+            raise ValueError("Given answer not in options.")
+        final_pants = input("What pants would you like to wear? Please type answer in lower case!")
+        if final_pants not in options_pants:
+            raise ValueError("Given answer not in options.")
+        final_shoes = input("What shoes would you like to wear? Please type answer in lower case!")
+        if final_shoes not in options_shoes:
+            raise ValueError("Given answer not in options.")
+        final_accessories = input("What accessory would you like to wear? Please type answer in lower case!")
+        if final_accessories not in options_accessories:
+            raise ValueError("Given answer not in options.")
         self.tops = final_tops
         self.pants = final_pants
         self.shoes = final_shoes
         self.accessories = final_accessories
 
         outfit = self.tops + self.pants + self.shoes + self.accessories
+        return outfit
     
     def __repr__(self):
         return f"Because of the weather being {self.weather}, you decided upon this outfit: \
@@ -167,11 +186,6 @@ def parse_args(arglist):
     
     Expect six mandatory arguments:
         The path to a file of clothing options
-        The weather (either rainy, sunny, or cold)
-        The top you want to wear from the file of clothing options
-        The pants you want to wear from the file of clothing options
-        The shoes you want to wear from the file of clothing options
-        The accessories you want to wear from the file of clothing options
     
     Args:
          arglist (list of str): command-line arguments.
@@ -182,14 +196,8 @@ def parse_args(arglist):
     """
     parser = ArgumentParser()
     parser.add_argument("filepath", help="file with clothing options")
-    parser.add_argument("weather", help="Weather is rainy, sunny, or cold")
-    parser.add_argument("tops", help="top you want to wear")
-    parser.add_argument("pants", help="pants you want to wear")
-    parser.add_argument("shoes", help="shoes you want to wear")
-    parser.add_argument("accessories", help="accessories you want to wear")
     return parser.parse_args(arglist)
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
-    main(args.filepath, args.weather, args.tops, args.pants, args.shoes, 
-         args.accessories)
+    main(args.filepath)
