@@ -7,7 +7,7 @@ import json
 
 class Closet:
     """This is the closet of items that will reveal what is in it and the options for the item for the corresponding weather"""
-    def __init__(self, closetdata, tops, pants,  shoes, accessories):
+    def __init__(self, tops, pants,  shoes, accessories):
         """This will initialize the items that are in the JSON file from the closet and the categories that are listed
         Args:
             tops(str): the tops in the JSON closet
@@ -32,41 +32,32 @@ class Closet:
                 if value == val:
                     myList.append(item)
             else:
-                for elem in val:
-                    if elem == value:
-                        myList.append(item)
+                [item for elem in val if elem == value]
         for item in self.pants:
             val = self.pants[item]
             if isinstance(val, str):
                 if value == val:
                     myList.append(item)
             else:
-                for elem in val:
-                    if elem == value:
-                        myList.append(item)
+                [item for elem in val if elem == value]
         for item in self.shoes:
             val = self.shoes[item]
             if isinstance(val, str):
                 if value == val:
                     myList.append(item)
             else:
-                for elem in val:
-                    if elem == value:
-                        myList.append(item)
+                [item for elem in val if elem == value]
         for item in self.accessories:
             val = self.accessories[item]
             if isinstance(val, str):
                 if value == val:
                     myList.append(item)
             else:
-                for elem in val:
-                    if elem == value:
-                        myList.append(item)
+                [item for elem in val if elem == value]
             
-    def options(self):
+    def option(self):
         """ This will show what are the options for the category based on the """
-        
-
+    
 class Selection(Closet):
     """Child class for Closet, user selects outfit.
     
@@ -90,6 +81,9 @@ class Selection(Closet):
             raise ValueError("Weather must be sunny, rainy, or cold")
         else:
             return f"The weather for today is {user_weather}."
+    
+    def tempeture(self):
+        """Uses the dataframe """
     
     def options(self, user_weather, tops, pants, shoes, accessories):
         """User's options based upon the weather.
@@ -165,7 +159,7 @@ def main(filepath):
     """
     with open(filepath, "r", encoding ="utf-8") as f:
         closetdata = json.load(f)
-        closet = Closet(closetdata)
+        closet = Closet(closetdata['tops'], closetdata['pants'], closetdata['shoes'], closetdata['accessories'])
 
 
 def parse_args(arglist):
