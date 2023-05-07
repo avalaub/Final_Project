@@ -170,7 +170,7 @@ class Selection(Closet):
 def iteration(closet:Closet, df):
     print(df)
     select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
-    select.tempeture(df)
+    select.temperature(df)
     user_weather = select.weather()
     select.options(user_weather)
     selection = select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
