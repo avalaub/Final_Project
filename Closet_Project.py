@@ -4,6 +4,7 @@ on the weather."""
 from argparse import ArgumentParser
 import sys
 import json
+import pandas as pd
 
 class Closet:
     """This is the closet of items that will reveal what is in it and the options for the item for the corresponding weather"""
@@ -89,6 +90,12 @@ class Selection(Closet):
     
     def temperature(self):
         """Uses the dataframe """
+        day = int(input("Do you want to plan your outfit for a future data. If so, what day?")) - 1
+        x = df.iloc[day][2]
+        print(df.iloc[day][2])
+        if x > 40:
+            print("Today is Rainy")
+            self.options('rainy')
     
     def options(self, user_weather, tops, pants, shoes, accessories):
         """User's options based upon the weather.
@@ -173,7 +180,7 @@ class Selection(Closet):
 def iteration(closet:Closet, df):
     print(df)
     select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
-    select.temperature(df)
+    select.tempeture(df)
     user_weather = select.weather()
     select.options(user_weather)
     selection = select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
@@ -212,6 +219,7 @@ def parse_args(arglist):
     """
     parser = ArgumentParser()
     parser.add_argument("filepath", help="file with clothing options")
+    parser.add_argument("filepath2", help="file with weather data")
     return parser.parse_args(arglist)
 
 if __name__ == "__main__":
