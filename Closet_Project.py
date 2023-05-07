@@ -89,7 +89,7 @@ class Selection(Closet):
             except TypeError as error:
                 print(error)
     
-    def temperature(self):
+    def temperature(self, df):
         """Uses the dataframe """
         day = int(input("Do you want to plan your outfit for a future data. If so, what day?")) - 1
         x = df.iloc[day][2]
@@ -225,4 +225,4 @@ def parse_args(arglist):
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
-    main(args.filepath1, args.filepath2)
+    main(args.filepath, args.filepath2)
