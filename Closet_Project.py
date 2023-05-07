@@ -188,14 +188,14 @@ def iteration(closet:Closet, df):
     print(repr(select))
     select.decide(closet)
 
-def main(filepath):
+def main(filepath1, filepath2):
     """Opens the JSON file for reading and loads its contents.
     
     Args:
         filepath (str): string representing path to JSON file containing
         elements of a closet.
     """
-    with open(filepath, "r", encoding ="utf-8") as f:
+    with open(filepath1, "r", encoding ="utf-8") as f:
         closetdata = json.load(f)
         closet = Closet(closetdata['tops'], closetdata['pants'], closetdata['shoes'], closetdata['accessories'])
         print(closet)
