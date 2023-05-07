@@ -79,14 +79,15 @@ class Selection(Closet):
         Returns:
             user_weather(str): User input for weather.
         """
-        user_weather = input("What is the weather today? Please answer sunny, rainy, or cold!")
-        self.weather = user_weather
-        if isinstance(user_weather, str) == False:
-            raise TypeError("Weather is a str; must be sunny, rainy, or cold")
-        elif user_weather != "sunny" or user_weather != "rainy" or user_weather != "cold":
-            raise ValueError("Weather must be sunny, rainy, or cold")
-        else:
-            return f"The weather for today is {user_weather}."
+        while True:
+            try:
+                user_weather = input("What is the weather today? Please answer sunny, rainy, or cold!")
+                if user_weather not in ['sunny', 'rainy', 'cold']:
+                    raise TypeError("Weather is another string; must be sunny, rainy, or cold")
+                self.weather = user_weather
+                break
+            except TypeError as error:
+                print(error)
     
     def temperature(self):
         """Uses the dataframe """
