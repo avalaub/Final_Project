@@ -16,11 +16,10 @@ class Closet:
             accessories(str): the accessories in the JSON closet 
         
         """
-        for clothes in closetdata:
-            self.tops = tops
-            self.pants = pants
-            self.shoes = shoes
-            self.accessories = accessories
+        self.tops = tops
+        self.pants = pants
+        self.shoes = shoes
+        self.accessories = accessories
 
     def getKeys(self, value):
         """This will reveal what the weather is to the corresponding key of the item in the closet
@@ -167,7 +166,14 @@ class Selection(Closet):
         user_decision = input("Are you happy with your outfit? Please answer yes or no.")
         print("Glad you like your outfit!") if user_decision == "yes" else print("Try again!")
         
+
+def ClosetFrame(filepath):
+    """Dataframe dedicated to displaying to user the options of the closet with
+    filtering actions through a CSV.
     
+    Args:
+        filepath (CSV file): database representing clothes in closet.
+    """
 
 def main(filepath):
     """Opens the JSON file for reading and loads its contents.
@@ -179,6 +185,7 @@ def main(filepath):
     with open(filepath, "r", encoding ="utf-8") as f:
         closetdata = json.load(f)
         closet = Closet(closetdata['tops'], closetdata['pants'], closetdata['shoes'], closetdata['accessories'])
+        closet.getKeys(self.weather)
 
 
 def parse_args(arglist):
