@@ -87,7 +87,7 @@ class Selection(Closet):
         else:
             return f"The weather for today is {user_weather}."
     
-    def tempeture(self):
+    def temperature(self):
         """Uses the dataframe """
     
     def options(self, user_weather, tops, pants, shoes, accessories):
@@ -167,13 +167,16 @@ class Selection(Closet):
         print("Glad you like your outfit!") if user_decision == "yes" else print("Try again!")
         
 
-def ClosetFrame(filepath):
-    """Dataframe dedicated to displaying to user the options of the closet with
-    filtering actions through a CSV.
-    
-    Args:
-        filepath (CSV file): database representing clothes in closet.
-    """
+def iteration(closet:Closet, df):
+    print(df)
+    select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
+    select.tempeture(df)
+    user_weather = select.weather()
+    select.options(user_weather)
+    selection = select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
+    print(selection)
+    print(repr(select))
+    select.decide(closet)
 
 def main(filepath):
     """Opens the JSON file for reading and loads its contents.
