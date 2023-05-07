@@ -169,7 +169,7 @@ class Selection(Closet):
         return f"Because of the weather being {self.weather}, you decided upon this outfit: \
         {self.tops} with {self.pants}, {self.shoes}, and {self.accessories}"
         
-    def decide():
+    def decide(self, closet:Closet):
         user_decision = input("Are you happy with your outfit? Please answer yes or no.")
 
         while user_decision != "yes":
