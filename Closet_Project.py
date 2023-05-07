@@ -185,7 +185,6 @@ def main(filepath):
     with open(filepath, "r", encoding ="utf-8") as f:
         closetdata = json.load(f)
         closet = Closet(closetdata['tops'], closetdata['pants'], closetdata['shoes'], closetdata['accessories'])
-        closet.getKeys(self.weather)
 
 
 def parse_args(arglist):
