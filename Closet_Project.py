@@ -164,7 +164,10 @@ class Selection(Closet):
         
     def decide():
         user_decision = input("Are you happy with your outfit? Please answer yes or no.")
-        print("Glad you like your outfit!") if user_decision == "yes" else print("Try again!")
+
+        while user_decision != "yes":
+            print("Glad you like your outfit!") if user_decision == "yes" else iteration(closet)
+            break
         
 
 def iteration(closet:Closet, df):
@@ -188,6 +191,10 @@ def main(filepath):
     with open(filepath, "r", encoding ="utf-8") as f:
         closetdata = json.load(f)
         closet = Closet(closetdata['tops'], closetdata['pants'], closetdata['shoes'], closetdata['accessories'])
+        print(closet)
+
+        df = pd.read_csv(filepath2)
+        iteration(closet, df)
 
 
 def parse_args(arglist):
