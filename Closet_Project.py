@@ -16,11 +16,11 @@ class Closet:
             accessories(str): the accessories in the JSON closet 
         
         """
-        for clothes in closetdata:
-            self.tops = tops
-            self.pants = pants
-            self.shoes = shoes
-            self.accessories = accessories
+        
+        self.tops = tops
+        self.pants = pants
+        self.shoes = shoes
+        self.accessories = accessories
 
     def getKeys(self, value):
         """This will reveal what the weather is to the corresponding key of the item in the closet
@@ -163,11 +163,12 @@ class Selection(Closet):
         return f"Because of the weather being {self.weather}, you decided upon this outfit: \
         {self.tops} with {self.pants}, {self.shoes}, and {self.accessories}"
         
-    def decide():
+    def decide(self, closet:Closet):
         user_decision = input("Are you happy with your outfit? Please answer yes or no.")
-        print("Glad you like your outfit!") if user_decision == "yes" else print("Try again!")
-        
-    
+
+        while user_decision != "yes":
+            print("Glad you like your outfit!") if user_decision == "yes" else iteration(closet)
+            break
 
 def main(filepath):
     """Opens the JSON file for reading and loads its contents.
@@ -176,9 +177,13 @@ def main(filepath):
         filepath (str): string representing path to JSON file containing
         elements of a closet.
     """
-    with open(filepath, "r", encoding ="utf-8") as f:
+    with open(filepath1, "r", encoding ="utf-8") as f:
         closetdata = json.load(f)
         closet = Closet(closetdata['tops'], closetdata['pants'], closetdata['shoes'], closetdata['accessories'])
+        print(closet)
+
+        df = pd.read_csv(filepath2)
+        iteration(closet, df)
 
 
 def parse_args(arglist):
