@@ -64,9 +64,6 @@ class Closet:
         print(myList)
         return myList
             
-    def options(self):
-        """ This will show what are the options for the category based on the """
-        
 
 class Selection(Closet):
     """Child class for Closet, user selects outfit.
