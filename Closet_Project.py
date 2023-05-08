@@ -5,6 +5,8 @@ from argparse import ArgumentParser
 import sys
 import json
 import pandas as pd
+import matplotlib.pyplot as plt
+
 
 class Closet:
     """This is the closet of items that will reveal what is in it and the options for the item for the corresponding weather"""
@@ -37,28 +39,29 @@ class Closet:
                 if value == val:
                     myList.append(item)
             else:
-                [item for elem in val if elem == value]
+                myList.extend([item for elem in val if elem == value])
         for item in self.pants:
             val = self.pants[item]
             if isinstance(val, str):
                 if value == val:
                     myList.append(item)
             else:
-                [item for elem in val if elem == value]
+                myList.extend([item for elem in val if elem == value])
         for item in self.shoes:
             val = self.shoes[item]
             if isinstance(val, str):
                 if value == val:
                     myList.append(item)
             else:
-                [item for elem in val if elem == value]
+                myList.extend([item for elem in val if elem == value])
         for item in self.accessories:
             val = self.accessories[item]
             if isinstance(val, str):
                 if value == val:
                     myList.append(item)
             else:
-                [item for elem in val if elem == value]
+                myList.extend([item for elem in val if elem == value])
+        return myList
             
     def options(self):
         """ This will show what are the options for the category based on the """
@@ -198,7 +201,12 @@ def iteration(closet:Closet, df):
         odweather = select.temperature(df)
         select.weather(odweather)
               
-
+def graph(file):
+    df = pd.read_csv(file)
+    
+    plt.bar(df["day"], df["precip"])
+    plt.show()
+    
 def main(filepath1, filepath2):
     """Opens the JSON file for reading and loads its contents.
     
@@ -206,6 +214,7 @@ def main(filepath1, filepath2):
         filepath (str): string representing path to JSON file containing
         elements of a closet.
     """
+    graph(filepath2)    
     with open(filepath1, "r", encoding ="utf-8") as f:
         closetdata = json.load(f)
         closet = Closet(closetdata['tops'], closetdata['pants'], closetdata['shoes'], closetdata['accessories'])
