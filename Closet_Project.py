@@ -73,21 +73,24 @@ class Selection(Closet):
         final_shoes(str): final choice for shoes.
         final_accessories(str): final choice for accessories.
     """
-    def weather(self):
+    def weather(self, dfweather = None):
         """Weather for today.
         
         Returns:
             user_weather(str): User input for weather.
         """
         while True:
-            try:
-                user_weather = input("What is the weather today? Please answer sunny, rainy, or cold!")
-                if user_weather not in ['sunny', 'rainy', 'cold']:
-                    raise TypeError("Weather is another string; must be sunny, rainy, or cold")
-                self.weather = user_weather
-                break
-            except TypeError as error:
-                print(error)
+            if dfweather == None:
+                try:
+                    user_weather = input("What is the weather today? Please answer sunny, rainy, or cold!")
+                    if user_weather not in ['sunny', 'rainy', 'cold']:
+                        raise TypeError("Weather is another string; must be sunny, rainy, or cold")
+                    return user_weather
+                    #break
+                except TypeError as error:
+                    print(error)
+            else:
+                user_weather = dfweather
     
     def temperature(self, df):
         """Uses the dataframe """
@@ -163,31 +166,38 @@ class Selection(Closet):
         self.shoes = final_shoes
         self.accessories = final_accessories
 
-        outfit = self.tops + self.pants + self.shoes + self.accessories
+        outfit = (self.tops, self.pants, self.shoes, self.accessories)
         return outfit
     
     def __repr__(self):
-        return f"Because of the weather being {self.weather}, you decided upon this outfit: \
+        return f"You decided upon this outfit: \
         {self.tops} with {self.pants}, {self.shoes}, and {self.accessories}"
         
     def decide(self, closet:Closet):
         user_decision = input("Are you happy with your outfit? Please answer yes or no.")
 
         while user_decision != "yes":
-            print("Glad you like your outfit!") if user_decision == "yes" else iteration(closet)
+            print("Glad you like your outfit!") if user_decision == "yes" else iteration(closet, df)
             break
         
 
 def iteration(closet:Closet, df):
-    print(df)
-    select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
-    select.temperature(df)
-    user_weather = select.weather()
-    select.options(user_weather)
-    selection = select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
-    print(selection)
-    print(repr(select))
-    select.decide(closet)
+    decision = int(input("""
+    1: Select outfit for today
+    2: Select outfit for a certain number of days after today
+    """))
+    if decision == 1:
+        select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
+        user_weather = select.weather()
+        select.options(user_weather, closet.tops, closet.pants, closet.shoes, closet.accessories)
+        select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
+        print(repr(select))
+        select.decide(closet)
+    elif decision == 2:
+        select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
+        odweather = select.temperature(df)
+        select.weather(odweather)
+              
 
 def main(filepath1, filepath2):
     """Opens the JSON file for reading and loads its contents.
@@ -222,6 +232,7 @@ def parse_args(arglist):
     parser.add_argument("filepath", help="file with clothing options")
     parser.add_argument("filepath2", help="file with weather data")
     return parser.parse_args(arglist)
+
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
