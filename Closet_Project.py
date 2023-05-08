@@ -61,6 +61,7 @@ class Closet:
                     myList.append(item)
             else:
                 myList.extend([item for elem in val if elem == value])
+        print(myList)
         return myList
             
     def options(self):
@@ -133,9 +134,11 @@ class Selection(Closet):
             options_accessories = \
             list(filter(lambda x: accessories[x] == "cold", accessories))
         
-        print(f"Since the weather is {user_weather}, these are your options. For tops: \
-              {options_tops}, for pants: {options_pants}, for shoes: {options_shoes}, \
-              for accessories: {options_accessories}")
+        print(f"Since the weather is {user_weather}, these are your options")
+        print(f"For tops:{options_tops}")
+        print(f"For pants:{options_pants}")
+        print(f"For shoes:{options_shoes}")
+        print(f"For accessories:{options_accessories}")
     
     def choice(self, options_tops, options_pants, options_shoes, options_accessories):
         """User's choice of clothes.
@@ -173,8 +176,9 @@ class Selection(Closet):
         return outfit
     
     def __repr__(self):
-        return f"You decided upon this outfit: \
-        {self.tops} with {self.pants}, {self.shoes}, and {self.accessories}"
+        return f"""You decided upon this outfit:
+        {self.tops}, {self.pants}, {self.shoes}, and {self.accessories}
+        """
         
     def decide(self, closet:Closet):
         user_decision = input("Are you happy with your outfit? Please answer yes or no.")
@@ -184,7 +188,7 @@ class Selection(Closet):
             break
         
 
-def iteration(closet:Closet, df):
+def iteration(closet:Closet, df:pd.read_csv("march_weather.csv")):
     decision = int(input("""
     1: Select outfit for today
     2: Select outfit for a certain number of days after today
@@ -192,7 +196,8 @@ def iteration(closet:Closet, df):
     if decision == 1:
         select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
         user_weather = select.weather()
-        select.options(user_weather, closet.tops, closet.pants, closet.shoes, closet.accessories)
+        select.getKeys(user_weather)
+        # select.options(user_weather, closet.tops, closet.pants, closet.shoes, closet.accessories)
         select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
         print(repr(select))
         select.decide(closet)
@@ -200,6 +205,7 @@ def iteration(closet:Closet, df):
         select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
         odweather = select.temperature(df)
         select.weather(odweather)
+        select.options(closet.tops, closet.pants, closet.shoes, closet.accessories)
               
 def graph(file):
     df = pd.read_csv(file)
@@ -218,8 +224,7 @@ def main(filepath1, filepath2):
     with open(filepath1, "r", encoding ="utf-8") as f:
         closetdata = json.load(f)
         closet = Closet(closetdata['tops'], closetdata['pants'], closetdata['shoes'], closetdata['accessories'])
-        print(closet)
-
+       # closet.getKeys("sunny")
         df = pd.read_csv(filepath2)
         iteration(closet, df)
 
