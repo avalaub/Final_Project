@@ -207,21 +207,24 @@ def iteration(closet:Closet, df:pd.read_csv("march_weather.csv")):
         select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
         user_weather = select.weather()
         select.getKeys(user_weather)
-        # select.options(user_weather, closet.tops, closet.pants, closet.shoes, closet.accessories)
         select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
         print(repr(select))
         select.decide(closet)
     elif decision == 2:
         select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
         odweather = select.temperature(df)
-        select.weather(odweather)
-        select.options(closet.tops, closet.pants, closet.shoes, closet.accessories)
-              
+        select.getKeys(odweather)
+        select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
+        print(repr(select))
+        select.decide(closet)
+        
+                   
 def graph(file):
     df = pd.read_csv(file)
     
     plt.bar(df["day"], df["precip"])
-    plt.show()
+    plt.show() 
+   
     
 def main(filepath1, filepath2):
     """Opens the JSON file for reading and loads its contents.
