@@ -112,7 +112,7 @@ class Selection(Closet):
         while True:
             if dfweather == None:
                 try:
-                    user_weather = input("What is the weather today? Please answer sunny, rainy, or cold!")
+                    user_weather = input("Is the weather today sunny, rainy, or cold? Please answer in lowercase! ")
                     if user_weather not in ['sunny', 'rainy', 'cold']:
                         raise TypeError("Weather is another string; must be sunny, rainy, or cold.")
                     return user_weather
@@ -137,7 +137,7 @@ class Selection(Closet):
         """
         
         day = int(input("Would you like to plan your outfit for a future day?")
-                  (" If so, what day?")) - 1
+                  (" If so, what day? ")) - 1
         print(df.iloc[day])
         cold = df.iloc[day][1]
         sunny = df.iloc[day][2]
@@ -208,16 +208,16 @@ class Selection(Closet):
         Returns:
             outfit(str): self.tops, self.pants, self.shoes, self.accessories
         """
-        final_tops = input("What top would you like to wear? Please type answer in lower case!")
+        final_tops = input("What top would you like to wear? Please type answer in lower case! ")
         if final_tops not in options_tops:
             raise ValueError("Given answer not in options.")
-        final_pants = input("What pants would you like to wear? Please type answer in lower case!")
+        final_pants = input("What pants would you like to wear? Please type answer in lower case! ")
         if final_pants not in options_pants:
             raise ValueError("Given answer not in options.")
-        final_shoes = input("What shoes would you like to wear? Please type answer in lower case!")
+        final_shoes = input("What shoes would you like to wear? Please type answer in lower case! ")
         if final_shoes not in options_shoes:
             raise ValueError("Given answer not in options.")
-        final_accessories = input("What accessory would you like to wear? Please type answer in lower case!")
+        final_accessories = input("What accessory would you like to wear? Please type answer in lower case! ")
         if final_accessories not in options_accessories:
             raise ValueError("Given answer not in options.")
         self.tops = final_tops
