@@ -91,8 +91,20 @@ class Selection(Closet):
         final_shoes(str): final choice for shoes.
         final_accessories(str): final choice for accessories.
     """
+    
+    
     def weather(self, dfweather = None):
-        """Weather for today.
+        """Prompts user to input the weather from the options sunny, rainy, or
+        cold.
+        
+        Args:
+            dfweather (str):
+            
+        Raises:
+            TypeError: Weather is another string; must be sunny, rainy, or cold
+        
+        Side effects:
+            prints error.
         
         Returns:
             user_weather(str): User input for weather.
@@ -102,7 +114,7 @@ class Selection(Closet):
                 try:
                     user_weather = input("What is the weather today? Please answer sunny, rainy, or cold!")
                     if user_weather not in ['sunny', 'rainy', 'cold']:
-                        raise TypeError("Weather is another string; must be sunny, rainy, or cold")
+                        raise TypeError("Weather is another string; must be sunny, rainy, or cold.")
                     return user_weather
                     #break
                 except TypeError as error:
@@ -110,10 +122,11 @@ class Selection(Closet):
             else:
                 user_weather = dfweather
     
+    
     def temperature(self, df):
         """Uses the dataframe """
-        day = int(input("Do you want to plan your outfit for a future data. If so, what day?")) - 1
         
+        day = int(input("Do you want to plan your outfit for a future data. If so, what day?")) - 1
         print(df.iloc[day])
         cold = df.iloc[day][1]
         sunny = df.iloc[day][2]
@@ -128,6 +141,7 @@ class Selection(Closet):
         elif cold < 60:
             print("The day you chose is Cold")
             return "cold"
+    
     
     def options(self, user_weather, tops, pants, shoes, accessories):
         """User's options based upon the weather.
@@ -164,6 +178,7 @@ class Selection(Closet):
         print(f"For shoes:{options_shoes}")
         print(f"For accessories:{options_accessories}")
     
+    
     def choice(self, options_tops, options_pants, options_shoes, options_accessories):
         """User's choice of clothes.
 
@@ -178,6 +193,9 @@ class Selection(Closet):
             redefined `self.pants`
             redefined `self.shoes`
             redefined `self.accessories`
+            
+        Returns:
+            outfit(str): self.tops, self.pants, self.shoes, self.accessories
         """
         final_tops = input("What top would you like to wear? Please type answer in lower case!")
         if final_tops not in options_tops:
