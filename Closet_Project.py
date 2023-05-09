@@ -92,7 +92,6 @@ class Selection(Closet):
         final_accessories(str): final choice for accessories.
     """
     
-    
     def weather(self, dfweather = None):
         """Prompts user to input the weather from the options sunny, rainy, or
         cold.
@@ -109,6 +108,7 @@ class Selection(Closet):
         Returns:
             user_weather(str): User input for weather.
         """
+        # Possible f-string implementation
         while True:
             if dfweather == None:
                 try:
@@ -116,7 +116,6 @@ class Selection(Closet):
                     if user_weather not in ['sunny', 'rainy', 'cold']:
                         raise TypeError("Weather is another string; must be sunny, rainy, or cold.")
                     return user_weather
-                    #break
                 except TypeError as error:
                     print(error)
             else:
@@ -136,9 +135,20 @@ class Selection(Closet):
             cold(str):
         """
         
-        day = int(input("Would you like to plan your outfit for a future day?")
-                  (" If so, what day? ")) - 1
-        print(df.iloc[day])
+        day = int(input("How many days ahead would you like to plan your outfit for?")) - 1
+        weatherdf = dict()
+        i = 0
+        while i < len(df.iloc[day]):
+            if i == 0:
+                weatherdf["day"] = df.iloc[day][0]
+            elif i == 1:
+                weatherdf["low"] = df.iloc[day][1]
+            elif i == 2:
+                weatherdf["high"] = df.iloc[day][2]
+            else:
+                weatherdf["precip"] = df.iloc[day][3]
+            i += 1
+        print(weatherdf)
         cold = df.iloc[day][1]
         sunny = df.iloc[day][2]
         rainy = df.iloc[day][3]
@@ -211,6 +221,8 @@ class Selection(Closet):
         Returns:
             outfit(str): self.tops, self.pants, self.shoes, self.accessories
         """
+        valid = lambda x, y: 'valid' if x in y else 'invalid'
+        #if valid 
         final_tops = input("What top would you like to wear? Please type your answer in lower case! ")
         
         if final_tops not in options_tops:
@@ -247,17 +259,17 @@ class Selection(Closet):
         """
         
     
-    def decide(self, closet:Closet):
+    def decide(self, closet, df):
         """
         """
         user_decision = input("Are you happy with your outfit? Please answer yes or no.")
 
-        while user_decision != "yes":
-            print("Glad you like your outfit!") if user_decision == "yes" else iteration(closet, df)
-            break
+        
+        print("Glad you like your outfit!") if user_decision == "yes" else iteration(closet, df)
+        
         
 
-def iteration(closet:Closet, df:pd.read_csv("march_weather.csv")):
+def iteration(closet, df):
     """Allows user to choose if they would like to select an outfit for the
     current day or a day in the near future.
     
@@ -281,7 +293,7 @@ def iteration(closet:Closet, df:pd.read_csv("march_weather.csv")):
         select.getKeys(user_weather)
         select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
         print(repr(select))
-        select.decide(closet)
+        select.decide(closet, df)
     
     elif decision == 2:
         select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
@@ -289,7 +301,7 @@ def iteration(closet:Closet, df:pd.read_csv("march_weather.csv")):
         select.getKeys(odweather)
         select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
         print(repr(select))
-        select.decide(closet)
+        select.decide(closet, df)
         
                    
 def graph(file):
@@ -313,9 +325,9 @@ def main(filepath1, filepath2):
     with open(filepath1, "r", encoding ="utf-8") as f:
         closetdata = json.load(f)
         closet = Closet(closetdata['tops'], closetdata['pants'], closetdata['shoes'], closetdata['accessories'])
-       # closet.getKeys("sunny")
         df = pd.read_csv(filepath2)
         iteration(closet, df)
+       
 
 
 def parse_args(arglist):
