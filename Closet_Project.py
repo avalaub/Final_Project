@@ -37,7 +37,7 @@ class Closet:
         self.accessories = accessories
 
     
-    def getKeys(self, value):
+    def getKeys(self, value, choice):
         """Matches the weather selected to the corresponding key of the item in
         the JSON file.
         
@@ -50,34 +50,14 @@ class Closet:
             JSON file that correspond with the weather the user selects.
         """
         myList = []
-        for item in self.tops:
-            val = self.tops[item]
+        for item in choice:
+            val = choice[item]
             if isinstance(val, str):
                 if value == val:
                     myList.append(item)
             else:
                 myList.extend([item for elem in val if elem == value])
-        for item in self.pants:
-            val = self.pants[item]
-            if isinstance(val, str):
-                if value == val:
-                    myList.append(item)
-            else:
-                myList.extend([item for elem in val if elem == value])
-        for item in self.shoes:
-            val = self.shoes[item]
-            if isinstance(val, str):
-                if value == val:
-                    myList.append(item)
-            else:
-                myList.extend([item for elem in val if elem == value])
-        for item in self.accessories:
-            val = self.accessories[item]
-            if isinstance(val, str):
-                if value == val:
-                    myList.append(item)
-            else:
-                myList.extend([item for elem in val if elem == value])
+
         print(myList)
         return myList
             
@@ -278,7 +258,10 @@ def iteration(closet:Closet, df:pd.read_csv("march_weather.csv")):
     if decision == 1:
         select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
         user_weather = select.weather()
-        select.getKeys(user_weather)
+        select.getKeys(user_weather, closet.tops)
+        select.getKeys(user_weather, closet.pants)
+        select.getKeys(user_weather, closet.shoes)
+        select.getKeys(user_weather, closet.accessories)
         select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
         print(repr(select))
         select.decide(closet)
