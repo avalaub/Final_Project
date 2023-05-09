@@ -198,6 +198,9 @@ class Selection(Closet):
             final_pants(str): final choice for pants.
             final_shoes(str): final choice for shoes.
             final_accessories(str): final choice for accessories.
+            
+        Raises:
+            ValueError: Given answer not in options.
         
         Side effects:
             redefined `self.tops`
@@ -208,18 +211,23 @@ class Selection(Closet):
         Returns:
             outfit(str): self.tops, self.pants, self.shoes, self.accessories
         """
-        final_tops = input("What top would you like to wear? Please type answer in lower case! ")
+        final_tops = input("What top would you like to wear? Please type your answer in lower case! ")
+        
         if final_tops not in options_tops:
             raise ValueError("Given answer not in options.")
-        final_pants = input("What pants would you like to wear? Please type answer in lower case! ")
+        final_pants = input("What pants would you like to wear? Please type your answer in lower case! ")
+        
         if final_pants not in options_pants:
             raise ValueError("Given answer not in options.")
-        final_shoes = input("What shoes would you like to wear? Please type answer in lower case! ")
+        final_shoes = input("What shoes would you like to wear? Please type your answer in lower case! ")
+        
         if final_shoes not in options_shoes:
             raise ValueError("Given answer not in options.")
-        final_accessories = input("What accessory would you like to wear? Please type answer in lower case! ")
+        final_accessories = input("What accessory would you like to wear? Please type your answer in lower case! ")
+        
         if final_accessories not in options_accessories:
             raise ValueError("Given answer not in options.")
+        
         self.tops = final_tops
         self.pants = final_pants
         self.shoes = final_shoes
@@ -228,12 +236,20 @@ class Selection(Closet):
         outfit = (self.tops, self.pants, self.shoes, self.accessories)
         return outfit
     
+    
     def __repr__(self):
+        """
+        
+        Returns:
+        """
         return f"""You decided upon this outfit:
         {self.tops}, {self.pants}, {self.shoes}, and {self.accessories}
         """
         
+    
     def decide(self, closet:Closet):
+        """
+        """
         user_decision = input("Are you happy with your outfit? Please answer yes or no.")
 
         while user_decision != "yes":
@@ -242,10 +258,23 @@ class Selection(Closet):
         
 
 def iteration(closet:Closet, df:pd.read_csv("march_weather.csv")):
+    """Allows user to choose if they would like to select an outfit for the
+    current day or a day in the near future.
+    
+    Args:
+        closet:Closet:
+        df:pd.read_csv("march_weather.csv"):
+        
+    Side effects:
+        prints statement "Welcome to Virtual Closet!".
+        
+    """
+    print("Welcome to Virtual Closet!")
     decision = int(input("""
-    1: Please type 1 if you would like to select an outfit for today.
-    2: Please type 2 if you would like to select an outfit for a certain number of days after today.
+    1: Please type 1 if you would like to select an outfit for today!
+    2: Please type 2 if you would like to select an outfit for a certain number of days after today!
     """))
+    
     if decision == 1:
         select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
         user_weather = select.weather()
@@ -253,6 +282,7 @@ def iteration(closet:Closet, df:pd.read_csv("march_weather.csv")):
         select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
         print(repr(select))
         select.decide(closet)
+    
     elif decision == 2:
         select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
         odweather = select.temperature(df)
@@ -263,6 +293,8 @@ def iteration(closet:Closet, df:pd.read_csv("march_weather.csv")):
         
                    
 def graph(file):
+    """
+    """
     df = pd.read_csv(file)
     
     plt.bar(df["day"], df["precip"])
@@ -273,8 +305,9 @@ def main(filepath1, filepath2):
     """Opens the JSON file for reading and loads its contents.
     
     Args:
-        filepath (str): string representing path to JSON file containing
+        filepath1(str): string representing path to JSON file containing
         elements of a closet.
+        filepath2(str): graph containing data from a csv file.
     """
     graph(filepath2)    
     with open(filepath1, "r", encoding ="utf-8") as f:
