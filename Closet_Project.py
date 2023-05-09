@@ -243,8 +243,8 @@ class Selection(Closet):
 
 def iteration(closet:Closet, df:pd.read_csv("march_weather.csv")):
     decision = int(input("""
-    1: Select outfit for today
-    2: Select outfit for a certain number of days after today
+    1: Please type 1 if you would like to select an outfit for today.
+    2: Please type 2 if you would like to select an outfit for a certain number of days after today.
     """))
     if decision == 1:
         select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
