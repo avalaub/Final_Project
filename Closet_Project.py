@@ -124,22 +124,33 @@ class Selection(Closet):
     
     
     def temperature(self, df):
-        """Uses the dataframe """
+        """Uses the dataframe established in graph function to allow the user to
+        plan their outfit for a future day.
         
-        day = int(input("Do you want to plan your outfit for a future data. If so, what day?")) - 1
+        Args:
+            df
+            
+        Returns:
+            rainy(str):
+            sunny(str):
+            cold(str):
+        """
+        
+        day = int(input("Would you like to plan your outfit for a future day?")
+                  (" If so, what day?")) - 1
         print(df.iloc[day])
         cold = df.iloc[day][1]
         sunny = df.iloc[day][2]
         rainy = df.iloc[day][3]
         
         if rainy > 70:
-            print("The day you chose is Rainy")
+            print("The day you chose is Rainy!")
             return "rainy"
         elif sunny > 60:
-            print("The day you chose is Sunny")
+            print("The day you chose is Sunny!")
             return "sunny"
         elif cold < 60:
-            print("The day you chose is Cold")
+            print("The day you chose is Cold!")
             return "cold"
     
     
