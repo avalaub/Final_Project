@@ -171,11 +171,7 @@ class Selection(Closet):
             options_accessories = \
             list(filter(lambda x: accessories[x] == "cold", accessories))
         
-        print(f"Since the weather is {user_weather}, these are your options")
-        print(f"For tops:{options_tops}")
-        print(f"For pants:{options_pants}")
-        print(f"For shoes:{options_shoes}")
-        print(f"For accessories:{options_accessories}")
+        
     
     
     def choice(self, options_tops, options_pants, options_shoes, options_accessories):
@@ -199,6 +195,10 @@ class Selection(Closet):
         Returns:
             outfit(str): self.tops, self.pants, self.shoes, self.accessories
         """
+        print(f"For tops:{options_tops}")
+        print(f"For pants:{options_pants}")
+        print(f"For shoes:{options_shoes}")
+        print(f"For accessories:{options_accessories}")
         
         final_tops = input("What top would you like to wear? Please type your answer in lower case! ")
         
