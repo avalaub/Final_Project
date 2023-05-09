@@ -1,7 +1,5 @@
 """Virtual interactive closet that allows a user to choose their outfit based
 on the weather."""
-
-
 from argparse import ArgumentParser
 import sys
 import json
@@ -19,6 +17,8 @@ class Closet:
         shoes(str): the shoes defined in the JSON file.
         accessories(str): the accessories defined in the JSON file.
     """
+    
+    
     def __init__(self, tops, pants,  shoes, accessories):
         """Initializes the tops, pants, shoes, and accessories attributes.
         
@@ -27,20 +27,28 @@ class Closet:
             pants(str): the pants defined in the JSON file.
             shoes(str): the shoes defined in the JSON file.
             accessories(str): the accessories defined in the JSON file.
+            
+        Side effects:
+            Sets attributes tops, pants, shoes, and accessories.
         """
         self.tops = tops
         self.pants = pants
         self.shoes = shoes
         self.accessories = accessories
 
+    
     def getKeys(self, value):
-        """This will reveal what the weather is to the corresponding key of the item in the closet
-        Returns:
-            Keys of the items in the dictionary 
+        """Matches the weather selected to the corresponding key of the item in
+        the JSON file.
+        
+        Args:
+            value(str): clothing items in the JSON file.
+        
+        Side effects:
+            appends myList with instances of items in the JSON file.
+            prints myList which is a list containing the clothing items of the
+            JSON file that correspond with the weather the user selects.
         """
-        """This will reveal what the weather is to the corresponding key of the item in the closet.
-        Returns:
-            Keys of the items in the dictionary. """
         myList = []
         for item in self.tops:
             val = self.tops[item]
