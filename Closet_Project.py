@@ -1,6 +1,7 @@
 """Virtual interactive closet that allows a user to choose their outfit based
 on the weather."""
 
+
 from argparse import ArgumentParser
 import sys
 import json
@@ -9,15 +10,23 @@ import matplotlib.pyplot as plt
 
 
 class Closet:
-    """This is the closet of items that will reveal what is in it and the options for the item for the corresponding weather"""
+    """Closet of all clothing items available for the user to choose based upon 
+    the weather.
+    
+    Attributes:
+        tops(str): the tops defined in the JSON file.
+        pants(str): the pants defined in the JSON file.
+        shoes(str): the shoes defined in the JSON file.
+        accessories(str): the accessories defined in the JSON file.
+    """
     def __init__(self, tops, pants,  shoes, accessories):
-        """This will initialize the items that are in the JSON file from the closet and the categories that are listed
-        Args:
-            tops(str): the tops in the JSON closet
-            pants(str): the pants in the JSON closet 
-            shoes(str): the shoes in the JSON closet 
-            accessories(str): the accessories in the JSON closet 
+        """Initializes the tops, pants, shoes, and accessories attributes.
         
+        Args:
+            tops(str): the tops defined in the JSON file.
+            pants(str): the pants defined in the JSON file.
+            shoes(str): the shoes defined in the JSON file.
+            accessories(str): the accessories defined in the JSON file.
         """
         self.tops = tops
         self.pants = pants
