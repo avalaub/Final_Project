@@ -55,10 +55,9 @@ class Closet:
             if isinstance(val, str):
                 if value == val:
                     myList.append(item)
-            else:
+            else:    
                 myList.extend([item for elem in val if elem == value])
 
-        print(myList)
         return myList
             
 
@@ -88,7 +87,6 @@ class Selection(Closet):
         Returns:
             user_weather(str): User input for weather.
         """
-        # Possible f-string implementation
         while True:
             if dfweather == None:
                 try:
@@ -201,8 +199,7 @@ class Selection(Closet):
         Returns:
             outfit(str): self.tops, self.pants, self.shoes, self.accessories
         """
-        valid = lambda x, y: 'valid' if x in y else 'invalid'
-        #if valid 
+        
         final_tops = input("What top would you like to wear? Please type your answer in lower case! ")
         
         if final_tops not in options_tops:
@@ -244,12 +241,10 @@ class Selection(Closet):
         """
         user_decision = input("Are you happy with your outfit? Please answer yes or no.")
 
-        
+
         print("Glad you like your outfit!") if user_decision == "yes" else iteration(closet, df)
         
-        
-
-def iteration(closet, df):
+def iteration(closet:Closet, df:pd.read_csv("march_weather.csv")):
     """Allows user to choose if they would like to select an outfit for the
     current day or a day in the near future.
     
@@ -284,7 +279,7 @@ def iteration(closet, df):
         select.getKeys(odweather)
         select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
         print(repr(select))
-        select.decide(closet, df)
+        select.decide(closet)
         
                    
 def graph(file):
@@ -310,7 +305,7 @@ def main(filepath1, filepath2):
         closet = Closet(closetdata['tops'], closetdata['pants'], closetdata['shoes'], closetdata['accessories'])
         df = pd.read_csv(filepath2)
         iteration(closet, df)
-       
+
 
 
 def parse_args(arglist):
