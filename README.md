@@ -12,4 +12,6 @@ Please type into the command line: python Closet_Project.py Closet_Project.json 
 ## Attribution:
 | Method/function | Primary Author| Techniques Demonstrated|
 |-----------------|---------------|------------------------|
-| 
+| main            | Ava Laubach   | With statement         |
+| decide          | Ava Laubach   | Conditional Expression |
+
