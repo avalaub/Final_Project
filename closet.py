@@ -74,7 +74,7 @@ class Selection(Closet):
     """
     
     def weather(self, dfweather = None):
-        """Joshua Foxworth, 
+        """Joshua Foxworth, Optional Parameter.
         
         Prompts user to input the weather from the options sunny, rainy, or
         cold.
@@ -181,7 +181,7 @@ class Selection(Closet):
     
     
     def choice(self, options_tops, options_pants, options_shoes, options_accessories):
-        """Julian Gonzalez, 
+        """Julian Gonzalez, f-strings containing expressions.
         
         User's choice of clothes.
 
@@ -254,7 +254,7 @@ class Selection(Closet):
         print("Glad you like your outfit!") if user_decision == "yes" else iteration(closet, df)
         
 def iteration(closet:Closet, df:pd.read_csv("weather.csv")):
-    """Joshua Foxworth, Optional Parameter.
+    """Joshua Foxworth, Use of Key function.
     
     Allows user to choose if they would like to select an outfit for the
     current day or a day in the near future.
