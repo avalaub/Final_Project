@@ -209,20 +209,37 @@ class Selection(Closet):
         # print(f"For accessories:{options_accessories}")
         
         final_tops = input("What top would you like to wear? Please type your answer in lower case! ")
-        if final_tops not in options_tops:
-            raise ValueError(f"{final_tops} was not in options.")
         
+        while final_tops not in options_tops:
+            print(f"{final_tops} is not a valid option. Re-input choice.")
+            final_tops = input("What top would you like to wear? Please type your answer in lower case! ")
+            #raise ValueError("Given answer not in options.")
+            if final_tops in options_tops:
+                break
         final_pants = input("What pants would you like to wear? Please type your answer in lower case! ")
-        if final_pants not in options_pants:
-            raise ValueError("Given answer not in options.")
         
+        while final_pants not in options_pants:
+            print(f"{final_pants} is not a valid option. Re-input choice.")
+            final_pants = input("What pants would you like to wear? Please type your answer in lower case! ")
+            #raise ValueError("Given answer not in options.")
+            if final_pants in options_pants:
+                break
         final_shoes = input("What shoes would you like to wear? Please type your answer in lower case! ")
-        if final_shoes not in options_shoes:
-            raise ValueError("Given answer not in options.")
         
+        while final_shoes not in options_shoes:
+            print(f"{final_shoes} is not a valid option. Re-input choice.")
+            final_shoes = input("What shoes would you like to wear? Please type your answer in lower case! ")
+            #raise ValueError("Given answer not in options.")
+            if final_shoes in options_shoes:
+                break
         final_accessories = input("What accessory would you like to wear? Please type your answer in lower case! ")
-        if final_accessories not in options_accessories:
-            raise ValueError("Given answer not in options.")
+        
+        while final_accessories not in options_accessories:
+            print(f"{final_accessories} is not a valid option. Re-input choice.")
+            final_accessories = input("What accessory would you like to wear? Please type your answer in lower case! ")
+            #raise ValueError("Given answer not in options.")
+            if final_accessories in options_accessories:
+                break
         
         self.tops = final_tops
         self.pants = final_pants
@@ -248,7 +265,7 @@ class Selection(Closet):
         
         
         """
-        user_decision = input("Are you happy with your outfit? Please answer yes or no.")
+        user_decision = input("Are you happy with your outfit? Please answer yes or no. ")
 
 
         print("Glad you like your outfit!") if user_decision == "yes" else iteration(closet, df)
