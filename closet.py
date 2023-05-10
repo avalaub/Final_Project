@@ -94,9 +94,12 @@ class Selection(Closet):
         while True:
             if dfweather == None:
                 try:
-                    user_weather = input("Is the weather today sunny, rainy, or cold? Please answer in lowercase! ")
+                    user_weather = input(
+                        "Is the weather today sunny, rainy, or cold?"
+                        " Please answer in lowercase! ")
                     if user_weather not in ['sunny', 'rainy', 'cold']:
-                        raise TypeError("Weather is another string; must be sunny, rainy, or cold.")
+                        raise TypeError("Weather is another string;"
+                                        "must be sunny, rainy, or cold.")
                     return user_weather
                 except TypeError as error:
                     print(error)
@@ -119,7 +122,8 @@ class Selection(Closet):
             cold(str):
         """
         
-        day = int(input("How many days ahead would you like to plan your outfit for?")) - 1
+        day = int(input("How many days ahead would you like to plan your outfit"
+                        "for?")) - 1
         weatherdf = dict()
         i = 0
         while i < len(df.iloc[day]):
@@ -180,7 +184,8 @@ class Selection(Closet):
         
     
     
-    def choice(self, options_tops, options_pants, options_shoes, options_accessories):
+    def choice(self, options_tops, options_pants, options_shoes, 
+               options_accessories):
         """Julian Gonzalez, f-strings containing expressions.
         
         User's choice of clothes.
@@ -202,42 +207,47 @@ class Selection(Closet):
             
         Returns:
             outfit(str): self.tops, self.pants, self.shoes, self.accessories
-        """
-        # print(f"For tops:{options_tops}")
-        # print(f"For pants:{options_pants}")
-        # print(f"For shoes:{options_shoes}")
-        # print(f"For accessories:{options_accessories}")
-        
-        final_tops = input("What top would you like to wear? Please type your answer in lower case! ")
+        """ 
+        final_tops = input("What top would you like to wear?"
+                           "Please type your answer in lower case! ")
         
         while final_tops not in options_tops:
             print(f"{final_tops} is not a valid option. Re-input choice.")
-            final_tops = input("What top would you like to wear? Please type your answer in lower case! ")
-            #raise ValueError("Given answer not in options.")
+            final_tops = input("What top would you like to wear?"
+                               "Please type your answer in lower case! ")
+            
             if final_tops in options_tops:
                 break
-        final_pants = input("What pants would you like to wear? Please type your answer in lower case! ")
+        
+        final_pants = input("What pants would you like to wear?"
+                            "Please type your answer in lower case! ")
         
         while final_pants not in options_pants:
             print(f"{final_pants} is not a valid option. Re-input choice.")
-            final_pants = input("What pants would you like to wear? Please type your answer in lower case! ")
-            #raise ValueError("Given answer not in options.")
+            final_pants = input("What pants would you like to wear?"
+                                "Please type your answer in lower case! ")
+        
             if final_pants in options_pants:
                 break
-        final_shoes = input("What shoes would you like to wear? Please type your answer in lower case! ")
+        final_shoes = input("What shoes would you like to wear?"
+                            "Please type your answer in lower case! ")
         
         while final_shoes not in options_shoes:
             print(f"{final_shoes} is not a valid option. Re-input choice.")
-            final_shoes = input("What shoes would you like to wear? Please type your answer in lower case! ")
-            #raise ValueError("Given answer not in options.")
+            final_shoes = input("What shoes would you like to wear?"
+                                "Please type your answer in lower case! ")
+        
             if final_shoes in options_shoes:
                 break
-        final_accessories = input("What accessory would you like to wear? Please type your answer in lower case! ")
+        final_accessories = input("What accessory would you like to wear?"
+                                  "Please type your answer in lower case! ")
         
         while final_accessories not in options_accessories:
-            print(f"{final_accessories} is not a valid option. Re-input choice.")
-            final_accessories = input("What accessory would you like to wear? Please type your answer in lower case! ")
-            #raise ValueError("Given answer not in options.")
+            print(f"{final_accessories} is not a valid option."
+                  "Re-input choice.")
+            final_accessories = input("What accessory would you like to wear?"
+                                      "Please type your answer in lower case! ")
+            
             if final_accessories in options_accessories:
                 break
         
@@ -263,13 +273,20 @@ class Selection(Closet):
     def decide(self, closet, df):
         """Ava Laubach, conditional expressions.
         
+        Args:
+            closet: instance of Closet class
+            df: dataframe containing
+            
+        Side effects:
+            Prints: "Glad you like your outfit!" if user_decision == "yes" 
         
         """
-        user_decision = input("Are you happy with your outfit? Please answer yes or no. ")
-
-
-        print("Glad you like your outfit!") if user_decision == "yes" else iteration(closet, df)
+        user_decision = input(
+            "Are you happy with your outfit? Please answer yes or no. ")
+        print(("Glad you like your outfit!") if user_decision == "yes" else 
+              iteration(closet, df))
         
+
 def iteration(closet:Closet, df:pd.read_csv("weather.csv")):
     """Joshua Foxworth, Use of Key function.
     
@@ -281,14 +298,15 @@ def iteration(closet:Closet, df:pd.read_csv("weather.csv")):
         df:pd.read_csv("march_weather.csv"):
         
     Side effects:
-        prints statement "Welcome to Virtual Closet!".
+        Prints statement: "Welcome to Virtual Closet!".
         
     """
     print("Welcome to Virtual Closet!")
-    decision = int(input("""
-    1: Please type 1 if you would like to select an outfit for today!
-    2: Please type 2 if you would like to select an outfit for a certain number of days after today!
-    """))
+    
+    decision = int(input(
+        "1: Please type 1 if you would like to select an outfit for today!"
+        "2: Please type 2 if you would like to select an outfit for a certain" 
+        "number of days after today!"))
     
     if decision == 1:
         select = Selection(closet.tops, closet.pants, closet.shoes, 
