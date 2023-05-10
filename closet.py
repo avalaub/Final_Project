@@ -295,6 +295,7 @@ def graph(file):
     plt.title ("Weather Forecast")
     plt.xlabel('Day')
     plt.ylabel('Precipitation') 
+    plt.show()
    
     
 def main(filepath1, filepath2):
