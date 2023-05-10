@@ -38,7 +38,9 @@ class Closet:
 
     
     def getKeys(self, value, choice):
-        """Matches the weather selected to the corresponding key of the item in
+        """Michelle Doan, Comprehension Expression
+        
+        Matches the weather selected to the corresponding key of the item in
         the JSON file.
         
         Args:
@@ -72,7 +74,9 @@ class Selection(Closet):
     """
     
     def weather(self, dfweather = None):
-        """Prompts user to input the weather from the options sunny, rainy, or
+        """Joshua Foxworth, 
+        
+        Prompts user to input the weather from the options sunny, rainy, or
         cold.
         
         Args:
@@ -101,7 +105,9 @@ class Selection(Closet):
     
     
     def temperature(self, df):
-        """Uses the dataframe established in graph function to allow the user to
+        """Marvin Roca Chavez, Pandas Dataframes.
+        
+        Uses the dataframe established in graph function to allow the user to
         plan their outfit for a future day.
         
         Args:
@@ -175,7 +181,9 @@ class Selection(Closet):
     
     
     def choice(self, options_tops, options_pants, options_shoes, options_accessories):
-        """User's choice of clothes.
+        """Julian Gonzalez, 
+        
+        User's choice of clothes.
 
         Args:
             final_top(str): final choice for tops.
@@ -227,7 +235,7 @@ class Selection(Closet):
     
     
     def __repr__(self):
-        """
+        """Julian Gonzalez, Magic method.
         
         Returns:
         """
@@ -237,7 +245,9 @@ class Selection(Closet):
         
     
     def decide(self, closet, df):
-        """
+        """Ava Laubach, conditional expressions.
+        
+        
         """
         user_decision = input("Are you happy with your outfit? Please answer yes or no.")
 
@@ -245,7 +255,9 @@ class Selection(Closet):
         print("Glad you like your outfit!") if user_decision == "yes" else iteration(closet, df)
         
 def iteration(closet:Closet, df:pd.read_csv("weather.csv")):
-    """Allows user to choose if they would like to select an outfit for the
+    """Joshua Foxworth, Optional Parameter.
+    
+    Allows user to choose if they would like to select an outfit for the
     current day or a day in the near future.
     
     Args:
@@ -263,30 +275,34 @@ def iteration(closet:Closet, df:pd.read_csv("weather.csv")):
     """))
     
     if decision == 1:
-        select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
+        select = Selection(closet.tops, closet.pants, closet.shoes, 
+                           closet.accessories)
         user_weather = select.weather()
         sorted(select.getKeys(user_weather, closet.tops), reverse = True)
         sorted(select.getKeys(user_weather, closet.pants), reverse = True)
         sorted(select.getKeys(user_weather, closet.shoes), reverse = True)
         sorted(select.getKeys(user_weather, closet.accessories), reverse = True)
-        select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
+        select.choice(closet.tops, closet.pants, closet.shoes, 
+                      closet.accessories)
         print(repr(select))
         select.decide(closet, df)
     
     elif decision == 2:
-        select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
+        select = Selection(closet.tops, closet.pants, 
+                           closet.shoes, closet.accessories)
         odweather = select.temperature(df)
         select.getKeys(odweather, closet.tops)
         select.getKeys(odweather, closet.pants)
         select.getKeys(odweather, closet.shoes)
         select.getKeys(odweather, closet.accessories)
-        select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
+        select.choice(closet.tops, closet.pants, closet.shoes, 
+                      closet.accessories)
         print(repr(select))
         select.decide(closet, df)
         
                    
 def graph(file):
-    """
+    """Michelle Doan, visualizing data with pyplot.
     """
     
     df = pd.read_csv(file)
@@ -299,24 +315,29 @@ def graph(file):
    
     
 def main(filepath1, filepath2):
-    """Opens the JSON file for reading and loads its contents.
+    """Ava Laubach, with statement.
+    
+    Opens the JSON file for reading and loads its contents.
     
     Args:
         filepath1(str): string representing path to JSON file containing
         elements of a closet.
-        filepath2(str): graph containing data from a csv file.
+        filepath2(str): data from a csv file.
     """
     graph(filepath2)    
     with open(filepath1, "r", encoding ="utf-8") as f:
         closetdata = json.load(f)
-        closet = Closet(closetdata['tops'], closetdata['pants'], closetdata['shoes'], closetdata['accessories'])
+        closet = Closet(closetdata['tops'], closetdata['pants'], 
+                        closetdata['shoes'], closetdata['accessories'])
         df = pd.read_csv(filepath2)
         iteration(closet, df)
 
 
 
 def parse_args(arglist):
-    """ Parse command-line arguments.
+    """Marvin Roca Chavez, ArgumentParser Class.
+    
+    Parse command-line arguments.
     
     Expect six mandatory arguments:
         The path to a file of clothing options
