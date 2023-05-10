@@ -148,34 +148,34 @@ class Selection(Closet):
             return "cold"
     
     
-    def options(self, user_weather, tops, pants, shoes, accessories):
-        """User's options based upon the weather.
+    # def options(self, user_weather, tops, pants, shoes, accessories):
+    #     """User's options based upon the weather.
         
-        Args: 
-            user_weather(str): User input for weather.
-            tops(dict): dictorionary of tops in closet.
-            pants(dict): dictorionary of pants in closet.
-            shoes(dict): dictorionary of shoes in closet.
-            accessories(dict): dictorionary of accessories in closet.
-        """
-        if user_weather == "sunny":
-            options_tops = list(filter(lambda x: tops[x] == "sunny", tops))
-            options_pants = list(filter(lambda x: pants[x] == "sunny", pants))
-            options_shoes = list(filter(lambda x: shoes[x] == "sunny", shoes))
-            options_accessories = \
-            list(filter(lambda x: accessories[x] == "sunny", accessories))
-        elif user_weather == "rainy":
-            options_tops = list(filter(lambda x: tops[x] == "rainy", tops))
-            options_pants = list(filter(lambda x: pants[x] == "rainy", pants))
-            options_shoes = list(filter(lambda x: shoes[x] == "rainy", shoes))
-            options_accessories = \
-            list(filter(lambda x: accessories[x] == "rainy", accessories))
-        elif user_weather == "cold":
-            options_tops = list(filter(lambda x: tops[x] == "cold", tops))
-            options_pants = list(filter(lambda x: pants[x] == "cold", pants))
-            options_shoes = list(filter(lambda x: shoes[x] == "cold", shoes))
-            options_accessories = \
-            list(filter(lambda x: accessories[x] == "cold", accessories))
+    #     Args: 
+    #         user_weather(str): User input for weather.
+    #         tops(dict): dictorionary of tops in closet.
+    #         pants(dict): dictorionary of pants in closet.
+    #         shoes(dict): dictorionary of shoes in closet.
+    #         accessories(dict): dictorionary of accessories in closet.
+    #     """
+    #     if user_weather == "sunny":
+    #         options_tops = list(filter(lambda x: tops[x] == "sunny", tops))
+    #         options_pants = list(filter(lambda x: pants[x] == "sunny", pants))
+    #         options_shoes = list(filter(lambda x: shoes[x] == "sunny", shoes))
+    #         options_accessories = \
+    #         list(filter(lambda x: accessories[x] == "sunny", accessories))
+    #     elif user_weather == "rainy":
+    #         options_tops = list(filter(lambda x: tops[x] == "rainy", tops))
+    #         options_pants = list(filter(lambda x: pants[x] == "rainy", pants))
+    #         options_shoes = list(filter(lambda x: shoes[x] == "rainy", shoes))
+    #         options_accessories = \
+    #         list(filter(lambda x: accessories[x] == "rainy", accessories))
+    #     elif user_weather == "cold":
+    #         options_tops = list(filter(lambda x: tops[x] == "cold", tops))
+    #         options_pants = list(filter(lambda x: pants[x] == "cold", pants))
+    #         options_shoes = list(filter(lambda x: shoes[x] == "cold", shoes))
+    #         options_accessories = \
+    #         list(filter(lambda x: accessories[x] == "cold", accessories))
         
         
     
@@ -203,25 +203,24 @@ class Selection(Closet):
         Returns:
             outfit(str): self.tops, self.pants, self.shoes, self.accessories
         """
-        #print(f"For tops:{options_tops}")
-        #print(f"For pants:{options_pants}")
-        #print(f"For shoes:{options_shoes}")
-        #print(f"For accessories:{options_accessories}")
+        # print(f"For tops:{options_tops}")
+        # print(f"For pants:{options_pants}")
+        # print(f"For shoes:{options_shoes}")
+        # print(f"For accessories:{options_accessories}")
         
         final_tops = input("What top would you like to wear? Please type your answer in lower case! ")
-        
         if final_tops not in options_tops:
-            raise ValueError("Given answer not in options.")
-        final_pants = input("What pants would you like to wear? Please type your answer in lower case! ")
+            raise ValueError(f"{final_tops} was not in options.")
         
+        final_pants = input("What pants would you like to wear? Please type your answer in lower case! ")
         if final_pants not in options_pants:
             raise ValueError("Given answer not in options.")
-        final_shoes = input("What shoes would you like to wear? Please type your answer in lower case! ")
         
+        final_shoes = input("What shoes would you like to wear? Please type your answer in lower case! ")
         if final_shoes not in options_shoes:
             raise ValueError("Given answer not in options.")
-        final_accessories = input("What accessory would you like to wear? Please type your answer in lower case! ")
         
+        final_accessories = input("What accessory would you like to wear? Please type your answer in lower case! ")
         if final_accessories not in options_accessories:
             raise ValueError("Given answer not in options.")
         
