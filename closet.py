@@ -291,10 +291,7 @@ def graph(file):
     
     df = pd.read_csv(file)
     
-    plt.bar(df["day"], df["precip"])
-    plt.title ("Weather Forecast")
-    plt.xlabel('Day')
-    plt.ylabel('Precipitation')
+    plt.bar(df["day"], df["precip"], x = "Days After Today", y = "Precip Chance")
     plt.show() 
    
     
