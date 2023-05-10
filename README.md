@@ -14,4 +14,8 @@ Please type into the command line: python Closet_Project.py Closet_Project.json 
 |-----------------|---------------|------------------------|
 | main            | Ava Laubach   | With statement         |
 | decide          | Ava Laubach   | Conditional Expression |
+| getKeys         | Michelle Doan |Comprehension Expression|
+| graph           | Michelle Doan | pyplot                 |
+| parse_args      |Marvin Roca Chavez|Argument Parser class|
+| temperature     |Marvin Roca Chavez|Filtering Pandas Dataframe|
 
