@@ -303,16 +303,16 @@ def iteration(closet:Closet, df:pd.read_csv("weather.csv")):
     """
     print("Welcome to Virtual Closet!")
     
-    decision = int(input(
-        "1: Please type 1 if you would like to select an outfit for today!"
-        "2: Please type 2 if you would like to select an outfit for a certain" 
-        "number of days after today!"))
+    decision = int(input("""
+    1: Type 1 if you would like to select an outfit for today!
+    2: Type 2 to select an outfit for a certain number of days after today!
+    """))
     
     if decision == 1:
         select = Selection(closet.tops, closet.pants, closet.shoes, 
                            closet.accessories)
         user_weather = select.weather()
-        sorted(select.getKeys(user_weather, closet.tops), reverse = True)
+        (select.getKeys(user_weather, closet.tops))
         sorted(select.getKeys(user_weather, closet.pants), reverse = True)
         sorted(select.getKeys(user_weather, closet.shoes), reverse = True)
         sorted(select.getKeys(user_weather, closet.accessories), reverse = True)
