@@ -198,7 +198,7 @@ class Selection(Closet):
         #print(f"For tops:{options_tops}")
         #print(f"For pants:{options_pants}")
         #print(f"For shoes:{options_shoes}")
-       # print(f"For accessories:{options_accessories}")
+        #print(f"For accessories:{options_accessories}")
         
         final_tops = input("What top would you like to wear? Please type your answer in lower case! ")
         
