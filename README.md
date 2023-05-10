@@ -15,7 +15,10 @@ Please type into the command line: python Closet_Project.py Closet_Project.json 
 | main            | Ava Laubach   | With statement         |
 | decide          | Ava Laubach   | Conditional Expression |
 | getKeys         | Michelle Doan |Comprehension Expression|
-| graph           | Michelle Doan | pyplot                 |
-| parse_args      |Marvin Roca Chavez|Argument Parser class|
+| graph           | Michelle Doan |Visualizing data with pyplot|
+| parse_args      |Marvin Roca Chavez|ArgumentParser class|
 | temperature     |Marvin Roca Chavez|Filtering Pandas Dataframe|
-
+| weather         | Joshua Foxworth| Optional Parameter|
+| iteration       | Joshua Foxworth |Use of a Key Function|
+| choice         | Julian Gonzalez| f-strings|
+| repr           | Julian Gonzalez |Magic Method|
