@@ -244,7 +244,7 @@ class Selection(Closet):
 
         print("Glad you like your outfit!") if user_decision == "yes" else iteration(closet, df)
         
-def iteration(closet:Closet, df:pd.read_csv("march_weather.csv")):
+def iteration(closet:Closet, df:pd.read_csv("weather.csv")):
     """Allows user to choose if they would like to select an outfit for the
     current day or a day in the near future.
     
@@ -290,7 +290,7 @@ def graph(file):
     """
     df = pd.read_csv(file)
     
-    plt.bar(df["day"], df["precip"])
+    plt.bar(df["day"], df["precip"], x = "Days After Today", y = "Precip Chance")
     plt.show() 
    
     
