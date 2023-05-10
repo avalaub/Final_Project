@@ -209,44 +209,44 @@ class Selection(Closet):
             outfit(str): self.tops, self.pants, self.shoes, self.accessories
         """ 
         final_tops = input("What top would you like to wear?"
-                           "Please type your answer in lower case! ")
+                           " Please type your answer in lower case! ")
         
         while final_tops not in options_tops:
             print(f"{final_tops} is not a valid option. Re-input choice.")
             final_tops = input("What top would you like to wear?"
-                               "Please type your answer in lower case! ")
+                               " Please type your answer in lower case! ")
             
             if final_tops in options_tops:
                 break
         
         final_pants = input("What pants would you like to wear?"
-                            "Please type your answer in lower case! ")
+                            " Please type your answer in lower case! ")
         
         while final_pants not in options_pants:
             print(f"{final_pants} is not a valid option. Re-input choice.")
             final_pants = input("What pants would you like to wear?"
-                                "Please type your answer in lower case! ")
+                                " Please type your answer in lower case! ")
         
             if final_pants in options_pants:
                 break
         final_shoes = input("What shoes would you like to wear?"
-                            "Please type your answer in lower case! ")
+                            " Please type your answer in lower case! ")
         
         while final_shoes not in options_shoes:
             print(f"{final_shoes} is not a valid option. Re-input choice.")
             final_shoes = input("What shoes would you like to wear?"
-                                "Please type your answer in lower case! ")
+                                " Please type your answer in lower case! ")
         
             if final_shoes in options_shoes:
                 break
         final_accessories = input("What accessory would you like to wear?"
-                                  "Please type your answer in lower case! ")
+                                  " Please type your answer in lower case! ")
         
         while final_accessories not in options_accessories:
             print(f"{final_accessories} is not a valid option."
-                  "Re-input choice.")
+                  " Re-input choice.")
             final_accessories = input("What accessory would you like to wear?"
-                                      "Please type your answer in lower case! ")
+                                      " Please type your answer in lower case! ")
             
             if final_accessories in options_accessories:
                 break
@@ -312,13 +312,13 @@ def iteration(closet:Closet, df:pd.read_csv("weather.csv")):
         select = Selection(closet.tops, closet.pants, closet.shoes, 
                            closet.accessories)
         user_weather = select.weather()
-        (select.getKeys(user_weather, closet.tops))
-        sorted(select.getKeys(user_weather, closet.pants), reverse = True)
-        sorted(select.getKeys(user_weather, closet.shoes), reverse = True)
-        sorted(select.getKeys(user_weather, closet.accessories), reverse = True)
+        select.getKeys(user_weather, closet.tops)
+        select.getKeys(user_weather, closet.pants)
+        select.getKeys(user_weather, closet.shoes)
+        select.getKeys(user_weather, closet.accessories)
         select.choice(closet.tops, closet.pants, closet.shoes, 
                       closet.accessories)
-        print(repr(select))
+        print((repr(select)))
         select.decide(closet, df)
     
     elif decision == 2:
