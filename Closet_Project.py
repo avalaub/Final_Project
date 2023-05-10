@@ -57,7 +57,7 @@ class Closet:
                     myList.append(item)
             else:    
                 myList.extend([item for elem in val if elem == value])
-
+        print(myList)
         return myList
             
 
@@ -195,10 +195,10 @@ class Selection(Closet):
         Returns:
             outfit(str): self.tops, self.pants, self.shoes, self.accessories
         """
-        print(f"For tops:{options_tops}")
-        print(f"For pants:{options_pants}")
-        print(f"For shoes:{options_shoes}")
-        print(f"For accessories:{options_accessories}")
+        #print(f"For tops:{options_tops}")
+        #print(f"For pants:{options_pants}")
+        #print(f"For shoes:{options_shoes}")
+       # print(f"For accessories:{options_accessories}")
         
         final_tops = input("What top would you like to wear? Please type your answer in lower case! ")
         
@@ -276,10 +276,13 @@ def iteration(closet:Closet, df:pd.read_csv("march_weather.csv")):
     elif decision == 2:
         select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
         odweather = select.temperature(df)
-        select.getKeys(odweather)
+        select.getKeys(odweather, closet.tops)
+        select.getKeys(odweather, closet.pants)
+        select.getKeys(odweather, closet.shoes)
+        select.getKeys(odweather, closet.accessories)
         select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
         print(repr(select))
-        select.decide(closet)
+        select.decide(closet, df)
         
                    
 def graph(file):
