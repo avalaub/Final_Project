@@ -5,7 +5,7 @@ The march_weather.csv contains data of weather and the precipitation levels of M
 Closet_Project.py is our main program.
 
 ## Instructions on how to run your program from the command line:
-Please type into the command line: python Closet_Project.py Closet_Project.json march_weather.csv
+Please type into the command line: python closet.py closet.json weather.csv
 
 ## Instructions on how to use your program and/or interpret the output of the program, as applicable:
 
