@@ -19,7 +19,7 @@
     "pants": {
         "jorts": "sunny",
         "jeans": ["cold", "rainy"],
-        "sweatpants": "cold",
+        "sweatpants": ["cold", "rainy"],
         "cargo pants": "cold",
         "leggings": ["rainy", "cold"],
         "water-resistant pants": "rainy",
@@ -28,7 +28,12 @@
         "skirt": "sunny",
         "biker shorts": "sunny",
         "sweatshorts": "sunny",
-        "capris": "sunny"
+        "capris": "sunny",
+        "joggers": ["cold", "rainy"],
+        "dress pants": ["cold", "rainy"],
+        "snow pants": "cold",
+        "ripped jeans": "sunny",
+        "pajama pants": ["cold", "rainy", "sunny"]
     },
     "shoes": {
         "sneakers": ["cold", "rainy", "sunny"],
