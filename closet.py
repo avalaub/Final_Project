@@ -29,7 +29,7 @@ class Closet:
             accessories(str): the accessories defined in the JSON file.
             
         Side effects:
-            Sets attributes tops, pants, shoes, and accessories.
+            Sets attributes tops, pants, shoes, accessories, and global options list.
         """
         self.tops = tops
         self.pants = pants
@@ -195,16 +195,7 @@ class Selection(Closet):
     def choice(self):
         """Julian Gonzalez, f-strings containing expressions.
         
-        User's choice of clothes.
-
-        Args:
-            final_top(str): final choice for tops.
-            final_pants(str): final choice for pants.
-            final_shoes(str): final choice for shoes.
-            final_accessories(str): final choice for accessories.
-            
-        Raises:
-            ValueError: Given answer not in options.
+        User prompts for clothing decisions.
         
         Side effects:
             redefined `self.tops`
@@ -270,7 +261,10 @@ class Selection(Closet):
     def __repr__(self):
         """Julian Gonzalez, Magic method.
         
+        Formal Representation of user's choice of outfit.
+        
         Returns:
+            f-string of clothing attributes.
         """
         return f"""You decided upon this outfit:
         {self.tops}, {self.pants}, {self.shoes}, and {self.accessories}
