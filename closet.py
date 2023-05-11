@@ -51,6 +51,7 @@ class Closet:
             prints myList which is a list containing the clothing items of the
             JSON file that correspond with the weather the user selects.
         """
+        global myList
         myList = []
         for item in choice:
             val = choice[item]
@@ -59,7 +60,6 @@ class Closet:
                     myList.append(item)
             else:    
                 myList.extend([item for elem in val if elem == value])
-        print(myList)
         return myList
             
 
@@ -80,7 +80,8 @@ class Selection(Closet):
         cold.
         
         Args:
-            dfweather (str):
+            dfweather (str, optional): weather based on dataframe selection;
+                optionally passed if user types `2` at beginning.
             
         Raises:
             TypeError: Weather is another string; must be sunny, rainy, or cold
@@ -274,11 +275,12 @@ def iteration(closet:Closet, df:pd.read_csv("weather.csv")):
     """Joshua Foxworth, Use of Key function.
     
     Allows user to choose if they would like to select an outfit for the
-    current day or a day in the near future.
+    current day or a day in the near future as well as calls instances of class
+    methods. Also loops back program if user wants to run it again.
     
     Args:
-        closet:Closet:
-        df:pd.read_csv("march_weather.csv"):
+        closet:Closet: Instance of Closet Class.
+        df:pd.read_csv("weather.csv"): Dataframe created from weather.csv.
         
     Side effects:
         prints statement "Welcome to Virtual Closet!".
@@ -294,10 +296,14 @@ def iteration(closet:Closet, df:pd.read_csv("weather.csv")):
         select = Selection(closet.tops, closet.pants, closet.shoes, 
                            closet.accessories)
         user_weather = select.weather()
-        sorted(select.getKeys(user_weather, closet.tops), reverse = True)
-        sorted(select.getKeys(user_weather, closet.pants), reverse = True)
-        sorted(select.getKeys(user_weather, closet.shoes), reverse = True)
-        sorted(select.getKeys(user_weather, closet.accessories), reverse = True)
+        select.getKeys(user_weather, closet.tops)
+        print(sorted(myList, key = len))
+        select.getKeys(user_weather, closet.pants)
+        print(sorted(myList, key = len))
+        select.getKeys(user_weather, closet.shoes)
+        print(sorted(myList, key = len))
+        select.getKeys(user_weather, closet.accessories)
+        print(sorted(myList, key = len))
         select.choice(closet.tops, closet.pants, closet.shoes, 
                       closet.accessories)
         print(repr(select))
@@ -308,9 +314,13 @@ def iteration(closet:Closet, df:pd.read_csv("weather.csv")):
                            closet.shoes, closet.accessories)
         odweather = select.temperature(df)
         select.getKeys(odweather, closet.tops)
+        print(sorted(myList, key = len))
         select.getKeys(odweather, closet.pants)
+        print(sorted(myList, key = len))
         select.getKeys(odweather, closet.shoes)
+        print(sorted(myList, key = len))
         select.getKeys(odweather, closet.accessories)
+        print(sorted(myList, key = len))
         select.choice(closet.tops, closet.pants, closet.shoes, 
                       closet.accessories)
         print(repr(select))
