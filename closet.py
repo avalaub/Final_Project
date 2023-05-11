@@ -47,6 +47,7 @@ class Closet:
         
         Args:
             value(str): clothing items in the JSON file.
+            choice (str): choice of the user 'sunny, 'rainy', or 'cold'
         
         Side effects:
             appends myList with instances of items in the JSON file.
@@ -354,6 +355,12 @@ def iteration(closet:Closet, df:pd.read_csv("weather.csv")):
                    
 def graph(file):
     """Michelle Doan, visualizing data with pyplot.
+    
+    Args: 
+        file(): opens the csv of weather data
+        
+    Returns:
+
     """
     
     df = pd.read_csv(file)
