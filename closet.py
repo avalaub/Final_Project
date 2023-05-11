@@ -279,12 +279,16 @@ class Selection(Closet):
     def decide(self, closet, df):
         """Ava Laubach, conditional expressions.
         
+        Allows the user to decide if they like their outfit or if they would
+        like to restart the program.
+        
         Args:
             closet: instance of Closet class
-            df: dataframe containing
+            df: dataframe created from weather.csv
             
         Side effects:
             Prints: "Glad you like your outfit!" if user_decision == "yes" 
+            Calls iteration function if user_decision does not equal "yes"
         
         """
         user_decision = input(
@@ -364,12 +368,18 @@ def graph(file):
 def main(filepath1, filepath2):
     """Ava Laubach, with statement.
     
-    Opens the JSON file for reading and loads its contents.
+    Opens the JSON file for reading and loads its contents. Reads the 
+    weather.csv file as a dataframe.
     
     Args:
         filepath1(str): string representing path to JSON file containing
         elements of a closet.
         filepath2(str): data from a csv file.
+        
+    Side effects:
+        Creates instances of the Closet class.
+        Calls the graph function.
+        Calls the iteration function.
     """
     graph(filepath2)    
     with open(filepath1, "r", encoding ="utf-8") as f:
