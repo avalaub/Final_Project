@@ -35,6 +35,8 @@ class Closet:
         self.pants = pants
         self.shoes = shoes
         self.accessories = accessories
+        global options
+        options = []
 
     
     def getKeys(self, value, choice):
@@ -50,6 +52,9 @@ class Closet:
             appends myList with instances of items in the JSON file.
             prints myList which is a list containing the clothing items of the
             JSON file that correspond with the weather the user selects.
+        
+        Returns:
+            myList(list)
         """
         global myList
         myList = []
@@ -60,6 +65,7 @@ class Closet:
                     myList.append(item)
             else:    
                 myList.extend([item for elem in val if elem == value])
+        options.extend(myList)
         return myList
             
 
@@ -124,7 +130,7 @@ class Selection(Closet):
         """
         
         day = int(input("How many days ahead would you like to plan your outfit"
-                        "for?")) - 1
+                        " for? ")) - 1
         weatherdf = dict()
         i = 0
         while i < len(df.iloc[day]):
@@ -185,8 +191,7 @@ class Selection(Closet):
         
     
     
-    def choice(self, options_tops, options_pants, options_shoes, 
-               options_accessories):
+    def choice(self):
         """Julian Gonzalez, f-strings containing expressions.
         
         User's choice of clothes.
@@ -212,44 +217,44 @@ class Selection(Closet):
         final_tops = input("What top would you like to wear?"
                            " Please type your answer in lower case! ")
         
-        while final_tops not in options_tops:
+        while final_tops not in options:
             print(f"{final_tops} is not a valid option. Re-input choice.")
             final_tops = input("What top would you like to wear?"
                                " Please type your answer in lower case! ")
             
-            if final_tops in options_tops:
+            if final_tops in options:
                 break
         
         final_pants = input("What pants would you like to wear?"
                             " Please type your answer in lower case! ")
         
-        while final_pants not in options_pants:
+        while final_pants not in options:
             print(f"{final_pants} is not a valid option. Re-input choice.")
             final_pants = input("What pants would you like to wear?"
                                 " Please type your answer in lower case! ")
         
-            if final_pants in options_pants:
+            if final_pants in options:
                 break
         final_shoes = input("What shoes would you like to wear?"
                             " Please type your answer in lower case! ")
         
-        while final_shoes not in options_shoes:
+        while final_shoes not in options:
             print(f"{final_shoes} is not a valid option. Re-input choice.")
             final_shoes = input("What shoes would you like to wear?"
                                 " Please type your answer in lower case! ")
         
-            if final_shoes in options_shoes:
+            if final_shoes in options:
                 break
         final_accessories = input("What accessory would you like to wear?"
                                   " Please type your answer in lower case! ")
         
-        while final_accessories not in options_accessories:
+        while final_accessories not in options:
             print(f"{final_accessories} is not a valid option."
                   " Re-input choice.")
             final_accessories = input("What accessory would you like to wear?"
                                       " Please type your answer in lower case! ")
             
-            if final_accessories in options_accessories:
+            if final_accessories in options:
                 break
         
         self.tops = final_tops
@@ -322,14 +327,13 @@ def iteration(closet:Closet, df:pd.read_csv("weather.csv")):
         print(sorted(myList, key = len))
         select.getKeys(user_weather, closet.accessories)
         print(sorted(myList, key = len))
-        select.choice(closet.tops, closet.pants, closet.shoes, 
-                      closet.accessories)
+        select.choice()
         print((repr(select)))
         select.decide(closet, df)
     
     elif decision == 2:
-        select = Selection(closet.tops, closet.pants, 
-                           closet.shoes, closet.accessories)
+        select = Selection(closet.tops, closet.pants, closet.shoes, 
+                           closet.accessories)
         odweather = select.temperature(df)
         select.getKeys(odweather, closet.tops)
         print(sorted(myList, key = len))
@@ -339,8 +343,7 @@ def iteration(closet:Closet, df:pd.read_csv("weather.csv")):
         print(sorted(myList, key = len))
         select.getKeys(odweather, closet.accessories)
         print(sorted(myList, key = len))
-        select.choice(closet.tops, closet.pants, closet.shoes, 
-                      closet.accessories)
+        select.choice()
         print(repr(select))
         select.decide(closet, df)
         
