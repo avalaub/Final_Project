@@ -122,12 +122,15 @@ class Selection(Closet):
         plan their outfit for a future day.
         
         Args:
-            df
-            
+            df: the dataframe 
+        
         Returns:
-            rainy(str):
-            sunny(str):
-            cold(str):
+            "rainy" (string): if the number in the "precip" column in the csv 
+                file is higher than 70
+            "sunny" (string): if the number in the "high" column in the csv
+                file is higher than 60
+            "cold" (string): if the number in the "precip" column in the csv 
+                file is lower than 60
         """
         
         day = int(input("How many days ahead would you like to plan your outfit"
@@ -397,15 +400,16 @@ def parse_args(arglist):
     
     Parse command-line arguments.
     
-    Expect six mandatory arguments:
-        The path to a file of clothing options
+    Expect two mandatory arguments:
+        The path to a json file of clothing options
+        The path to a csv file of with the temperature and precipitation of
+            days
     
     Args:
          arglist (list of str): command-line arguments.
 
     Returns:
-        namespace: an object with six attributes, filepath, weather, tops,
-            pants, shoes, accessories.
+        namespace: an object with two attributes, filepath and filepath2
     """
     parser = ArgumentParser()
     parser.add_argument("filepath", help="file with clothing options")
