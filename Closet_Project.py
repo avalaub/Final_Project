@@ -96,7 +96,20 @@ class Selection(Closet):
                 user_weather = dfweather
     
     def temperature(self, df):
-        """Uses the dataframe """
+        """Prints a dataframe based on how many days into the future the user
+            chooses 
+        
+        Args:
+            df: the dataframe 
+        
+        Returns:
+            "rainy" (string): if the number in the "precip" column in the csv file is 
+                higher than 70
+            "sunny" (string): if the number in the "high" column in the csv file is 
+                higher than 60
+            "cold" (string): if the number in the "precip" column in the csv file is 
+                lower than 60
+        """
         day = int(input("Do you want to plan your outfit for a future data. If so, what day?")) - 1
         
         print(df.iloc[day])
@@ -200,14 +213,18 @@ def iteration(closet:Closet, df):
     2: Select outfit for a certain number of days after today
     """))
     if decision == 1:
-        select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
+        select = Selection(closet.tops, closet.pants, closet.shoes, 
+                           closet.accessories)
         user_weather = select.weather()
-        select.options(user_weather, closet.tops, closet.pants, closet.shoes, closet.accessories)
-        select.choice(closet.tops, closet.pants, closet.shoes, closet.accessories)
+        select.options(user_weather, closet.tops, closet.pants, 
+                       closet.shoes, closet.accessories)
+        select.choice(closet.tops, closet.pants, closet.shoes, 
+                      closet.accessories)
         print(repr(select))
         select.decide(closet)
     elif decision == 2:
-        select = Selection(closet.tops, closet.pants, closet.shoes, closet.accessories)
+        select = Selection(closet.tops, closet.pants, closet.shoes, 
+                           closet.accessories)
         odweather = select.temperature(df)
         select.weather(odweather)
               
@@ -227,7 +244,8 @@ def main(filepath1, filepath2):
     graph(filepath2)    
     with open(filepath1, "r", encoding ="utf-8") as f:
         closetdata = json.load(f)
-        closet = Closet(closetdata['tops'], closetdata['pants'], closetdata['shoes'], closetdata['accessories'])
+        closet = Closet(closetdata['tops'], closetdata['pants'], 
+                        closetdata['shoes'], closetdata['accessories'])
         print(closet)
 
         df = pd.read_csv(filepath2)
@@ -237,15 +255,15 @@ def main(filepath1, filepath2):
 def parse_args(arglist):
     """ Parse command-line arguments.
     
-    Expect six mandatory arguments:
+    Expect two mandatory arguments:
         The path to a file of clothing options
+        The path to the csv file with temperature
     
     Args:
          arglist (list of str): command-line arguments.
 
     Returns:
-        namespace: an object with six attributes, filepath, weather, tops,
-            pants, shoes, accessories.
+        namespace: an object with two attributes, filepath, filepath2
     """
     parser = ArgumentParser()
     parser.add_argument("filepath", help="file with clothing options")
