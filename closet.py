@@ -164,38 +164,6 @@ class Selection(Closet):
             return "cold"
     
     
-    # def options(self, user_weather, tops, pants, shoes, accessories):
-    #     """User's options based upon the weather.
-        
-    #     Args: 
-    #         user_weather(str): User input for weather.
-    #         tops(dict): dictorionary of tops in closet.
-    #         pants(dict): dictorionary of pants in closet.
-    #         shoes(dict): dictorionary of shoes in closet.
-    #         accessories(dict): dictorionary of accessories in closet.
-    #     """
-    #     if user_weather == "sunny":
-    #         options_tops = list(filter(lambda x: tops[x] == "sunny", tops))
-    #         options_pants = list(filter(lambda x: pants[x] == "sunny", pants))
-    #         options_shoes = list(filter(lambda x: shoes[x] == "sunny", shoes))
-    #         options_accessories = \
-    #         list(filter(lambda x: accessories[x] == "sunny", accessories))
-    #     elif user_weather == "rainy":
-    #         options_tops = list(filter(lambda x: tops[x] == "rainy", tops))
-    #         options_pants = list(filter(lambda x: pants[x] == "rainy", pants))
-    #         options_shoes = list(filter(lambda x: shoes[x] == "rainy", shoes))
-    #         options_accessories = \
-    #         list(filter(lambda x: accessories[x] == "rainy", accessories))
-    #     elif user_weather == "cold":
-    #         options_tops = list(filter(lambda x: tops[x] == "cold", tops))
-    #         options_pants = list(filter(lambda x: pants[x] == "cold", pants))
-    #         options_shoes = list(filter(lambda x: shoes[x] == "cold", shoes))
-    #         options_accessories = \
-    #         list(filter(lambda x: accessories[x] == "cold", accessories))
-        
-        
-    
-    
     def choice(self):
         """Julian Gonzalez, f-strings containing expressions.
         
