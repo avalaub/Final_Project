@@ -1,7 +1,7 @@
 
 {
     "tops": {
-        "t-shirt": ["sunny", "cold", "rainy"],
+        "t-shirt": ["sunny", "rainy"],
         "tank top": "sunny",
         "short-sleeve button-up": "sunny",
         "sweater": "cold",
@@ -11,21 +11,29 @@
         "turtleneck": "cold",
         "windbreaker": "rainy",
         "poncho": "rainy",
-        "long-sleeve button-up": "cold" 
+        "long-sleeve button-up": "cold",
+        "crewneck": ["cold", "rainy"],
+        "long-sleeve t-shirt": ["cold", "rainy"],
+        "crop top": "sunny"
     },
     "pants": {
         "jorts": "sunny",
         "jeans": ["cold", "rainy"],
-        "sweatpants": "cold",
+        "sweatpants": ["cold", "rainy"],
         "cargo pants": "cold",
         "leggings": ["rainy", "cold"],
         "water-resistant pants": "rainy",
         "khakis": "cold",
         "runner shorts": "sunny",
-        "skirts": "sunny",
+        "skirt": "sunny",
         "biker shorts": "sunny",
         "sweatshorts": "sunny",
-        "capris": "sunny"
+        "capris": "sunny",
+        "joggers": ["cold", "rainy"],
+        "dress pants": ["cold", "rainy"],
+        "snow pants": "cold",
+        "ripped jeans": "sunny",
+        "pajama pants": ["cold", "rainy", "sunny"]
     },
     "shoes": {
         "sneakers": ["cold", "rainy", "sunny"],
@@ -35,7 +43,8 @@
         "uggs boots": "cold",
         "timberlands": ["rainy", "cold"],
         "construction boots": "cold",
-        "sandals": "sunny"
+        "sandals": "sunny",
+        "combat boots": ["cold", "rainy"]
     },
     "accessories": {
         "umbrella": "rainy",
@@ -44,6 +53,9 @@
         "beanie": ["cold", "rainy"],
         "scarf": "cold",
         "gloves": ["cold", "rainy"],
-        "ski-mask": "cold"
+        "ski-mask": "cold",
+        "visor": "sunny",
+        "sunflower hat": "sunny",
+        "bucket hat": "sunny"
     }
 }
