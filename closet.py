@@ -324,8 +324,6 @@ def graph(file):
     
     Args: 
         file(): opens the csv of weather data
-        
-    Returns:
 
     """
     
