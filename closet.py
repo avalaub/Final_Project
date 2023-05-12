@@ -29,7 +29,8 @@ class Closet:
             accessories(str): the accessories defined in the JSON file.
             
         Side effects:
-            Sets attributes tops, pants, shoes, accessories, and global options list.
+            Sets attributes tops, pants, shoes, accessories, and global options
+                list.
         """
         self.tops = tops
         self.pants = pants
@@ -246,8 +247,8 @@ class Selection(Closet):
         while final_accessories not in options:
             print(f"{final_accessories} is not a valid option."
                   " Re-input choice.")
-            final_accessories = input("What accessory would you like to wear?"
-                                      " Please type your answer in lower case! ")
+            final_accessories = input("What accessory would you like to wear? "
+                                      "Please type your answer in lower case! ")
             
             if final_accessories in options:
                 break
